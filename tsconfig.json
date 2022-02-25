@@ -13,8 +13,8 @@
     "strictPropertyInitialization": false,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "typeRoots": ["node_modules/@types", "src/@types"],
-    "baseUrl": "src/",
-    "outDir": "./dist"
+    "baseUrl": ".",
+    "outDir": "dist"
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules"]
