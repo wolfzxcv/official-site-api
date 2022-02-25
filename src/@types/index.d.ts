@@ -1,4 +1,5 @@
 export * from './checkIp';
+export * from './locales';
 export * from './news';
 export * from './responseFormat';
 

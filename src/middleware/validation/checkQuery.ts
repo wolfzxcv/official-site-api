@@ -1,4 +1,4 @@
-export type Locales = 'cn' | 'ar' | 'en' | 'ms' | 'id' | 'vi' | 'zh';
+import { Locales } from '../../@types';
 
 const allLangs = [
   { code: 'cn', value: 886 },
