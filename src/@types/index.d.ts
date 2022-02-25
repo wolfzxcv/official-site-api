@@ -9,8 +9,8 @@ declare global {
       customResponse(
         httpStatusCode: number,
         message: string,
-        data?: any,
-        error?: any
+        data?: unknown,
+        error?: unknown
       ): Response;
     }
   }

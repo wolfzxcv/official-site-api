@@ -4,8 +4,8 @@ import { IResponseFormat } from '../../@types';
 response.customResponse = function (
   httpStatusCode: number,
   message: string,
-  data: any = null,
-  errorRaw: any = null
+  data: unknown = null,
+  errorRaw: unknown = null
 ): Response {
   const res: IResponseFormat = {
     status: httpStatusCode,
