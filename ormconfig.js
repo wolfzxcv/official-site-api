@@ -22,7 +22,7 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['src/orm/entities/index.ts'],
-    migrations: ['src/orm/migrations/index.ts']
+    entities: ['dist/orm/entities/index.js'],
+    migrations: ['dist/orm/migrations/index.js']
   }
 ];
