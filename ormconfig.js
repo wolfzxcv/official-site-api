@@ -9,7 +9,8 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['src/entity/index.ts']
+    entities: ['src/orm/entities/index.ts'],
+    migrations: ['src/orm/migrations/index.ts']
   },
   {
     name: 'production',
@@ -21,6 +22,7 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['src/entity/index.ts']
+    entities: ['src/orm/entities/index.ts'],
+    migrations: ['src/orm/migrations/index.ts']
   }
 ];
