@@ -21,12 +21,21 @@ export type IResponseFormat = {
   id = 印尼語
   ar = 阿拉伯語
 
-- 因應"後台"增加日期選擇器, 前台 API 日期顯示規則更新.
+- 因應"後台"增加日期選擇器, API 回傳 displayTime 規則更新.
 
-  - ![](https://i.imgur.com/WFZei2D.jpg)
-  - 如果 API 有回傳日期選擇器時間,則優先顯示
-  - 若無,則回傳文章插入時間
+  - 如果該筆資料, 有 showTime,則回傳 showTime
+  - 若無,則回傳 time
   - time = 文章插入時間, showTime = 日期選擇器時間
+
+```typescript=
+type DataOutputFormat = {
+  id: number;
+  title: string;
+  content: string;
+  url?: string;  // 目前僅有 企業責任 可能有這個參數
+  displayTime: string;
+};
+```
 
 ## 1.市場分析
 

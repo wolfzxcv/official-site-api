@@ -1,6 +1,5 @@
 type DataCommonFormat = {
   id: number;
-
   title: string;
   content: string;
 };
