@@ -12,7 +12,7 @@ export type IResponseFormat = {
 };
 ```
 
-- 語言代號,[依照 ISO 碼命名](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes),**所有 API 皆須在 URL 上帶語系**參數,**lang=(要帶的語系)**
+- 語言代號,[依照 ISO 碼命名](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), API 參數 **lang** 為要請求的 **語系**
   cn = 簡體中文
   zh = 繁體中文
   en = 英語
