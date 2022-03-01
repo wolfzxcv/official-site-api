@@ -1,3 +1,4 @@
+export * from './Contact';
 export * from './Focus';
 export * from './Notice';
 export * from './Quotation';

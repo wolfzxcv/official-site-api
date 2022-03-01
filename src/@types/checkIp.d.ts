@@ -18,5 +18,5 @@ export type IIpApiRes = {
 
 export type ICheckIpRes = {
   ip: string;
-  isShow: boolean;
+  location?: string;
 };

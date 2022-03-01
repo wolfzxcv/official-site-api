@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
 import { IDailyFxAsiaRes, INewsRes } from '../../@types';
+import { customCodes } from '../../middleware/response/customCodes';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -19,11 +20,11 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
         text: x.text
       }));
 
-      res.customResponse(200, 'success', news);
+      res.customResponse(customCodes.success, 'success', news);
     } else {
-      res.customResponse(500, 'error');
+      res.customResponse(customCodes.serverError, 'error');
     }
   } catch (err) {
-    next(res.customResponse(500, 'error', null, err));
+    next(res.customResponse(customCodes.serverError, 'error', null, err));
   }
 };

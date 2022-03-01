@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
 import { ICheckIpRes, IIpApiRes } from '../../@types';
+import { customCodes } from '../../middleware/response/customCodes';
+import { formatExpressIp, formatXForwardedFor } from './format';
 
 export const checkIp = async (
   req: Request,
@@ -8,35 +10,40 @@ export const checkIp = async (
   next: NextFunction
 ) => {
   try {
-    const ip = req.ip.split(':').pop();
+    const clientIp =
+      formatXForwardedFor(req.headers['x-forwarded-for']) ||
+      formatExpressIp(req.ip);
 
-    const result = await axios.get<IIpApiRes>(`http://ip-api.com/json/${ip}`);
+    const result = await axios.get<IIpApiRes>(
+      `http://ip-api.com/json/${clientIp}`
+    );
 
     if (result && result.data) {
       const resultData = result.data;
 
-      let output: ICheckIpRes = {
-        ip: '',
-        isShow: false
-      };
+      let output = {} as ICheckIpRes;
       if (resultData.status === 'success') {
         output = {
           ip: resultData.query,
-          isShow: resultData.countryCode === 'HK'
+          location: resultData.countryCode
         };
 
-        res.customResponse(200, 'success', output);
+        res.customResponse(customCodes.success, 'success', output);
       } else {
         if (resultData.query) {
           output.ip = resultData.query;
         }
 
-        res.customResponse(400, resultData.message || 'error', output);
+        res.customResponse(
+          customCodes.clientError,
+          resultData.message || 'error',
+          output
+        );
       }
     } else {
-      res.customResponse(500, 'error');
+      res.customResponse(customCodes.serverError, 'error');
     }
   } catch (err) {
-    next(res.customResponse(500, 'error', null, err));
+    next(res.customResponse(customCodes.serverError, 'error', null, err));
   }
 };

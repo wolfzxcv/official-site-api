@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import { customCodes } from '../../middleware/response/customCodes';
 import { checkLang } from '../../middleware/validation/checkQuery';
 import { Quotation } from '../../orm/entities';
 import { formatOutput, MAX_QUERY } from '../../utils';
@@ -20,11 +21,14 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 
       const output = formatOutput(quotation);
 
-      res.customResponse(200, 'success', output);
+      res.customResponse(customCodes.success, 'success', output);
     } else {
-      res.customResponse(400, 'Please input valid lang in query');
+      res.customResponse(
+        customCodes.clientError,
+        'Please input valid lang in query'
+      );
     }
   } catch (err) {
-    next(res.customResponse(500, 'error', null, err));
+    next(res.customResponse(customCodes.serverError, 'error', null, err));
   }
 };
