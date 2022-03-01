@@ -3,5 +3,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "cSpell.words": ["typeorm"]
+  "cSpell.words": ["Scustomer", "typeorm"]
 }

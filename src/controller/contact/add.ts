@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm';
 import { IContactInput } from '../../@types';
 import { customCodes } from '../../middleware/response/customCodes';
 import { Contact } from '../../orm/entities/Contact';
+import { sendMail } from '../../utils/sendMail';
 
 export const add = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -18,6 +19,8 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
       content: req.body.content,
       time: new Date()
     };
+
+    await sendMail(newInput);
 
     const contactRepository = getRepository(Contact);
 
