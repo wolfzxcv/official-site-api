@@ -3,7 +3,7 @@
 ## 0.共用 response 格式
 
 ```typescript=
-export type IResponseFormat = {
+type IResponseFormat = {
   status: number;
   message: string;
   code: 1 | 0;
@@ -44,6 +44,7 @@ type DataOutputFormat = {
 | Method | GET            |
 | path   | **/quotation** |
 | param  | lang           |
+| table  | d_quotation    |
 
 ## 2.財經新聞
 
@@ -52,6 +53,7 @@ type DataOutputFormat = {
 | Method | GET        |
 | path   | **/focus** |
 | param  | lang       |
+| table  | d_focus    |
 
 ## 3.企業責任
 
@@ -60,6 +62,7 @@ type DataOutputFormat = {
 | Method | GET           |
 | path   | **/response** |
 | param  | lang          |
+| table  | d_response    |
 
 ## 4.平台公告
 
@@ -68,8 +71,36 @@ type DataOutputFormat = {
 | Method | GET         |
 | path   | **/notice** |
 | param  | lang        |
+| table  | d_notice    |
 
-## 5.偵測是否為香港 IP
+## 5.聯繫我們
+
+| Item   | Value        |
+| ------ | ------------ |
+| Method | POST         |
+| path   | **/contact** |
+| param  |              |
+| table  | d_contact    |
+
+```typescript=
+type IContactInput = {
+  name: string;
+  surname: string;
+  mobile: string;
+  email: string;
+  area: string;
+  type: string;
+  iScustomer: string;
+  login?: string;
+  content?: string;
+};
+```
+
+- 以上沒打問號的, 代表必填
+- 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
+- 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
+
+## 6.偵測 IP 來源地區
 
 | Item   | Value        |
 | ------ | ------------ |
@@ -78,13 +109,13 @@ type DataOutputFormat = {
 | param  |              |
 
 ```typescript=
-export type ICheckIpRes = {
-  ip: string;
-  isShow: boolean;
+type ICheckIpRes = {
+  ip: string; // client public ip
+  location?: string; // 回傳地區代碼, 香港為 HK, 若為香港IP, 前端需顯示風險彈窗
 };
 ```
 
-## 6.取得即時新聞
+## 7.取得即時新聞
 
 | Item   | Value     |
 | ------ | --------- |
@@ -93,7 +124,7 @@ export type ICheckIpRes = {
 | param  |           |
 
 ```typescript=
-export type INewsRes = {
+type INewsRes = {
   author: string | null;
   imageUrl: string | null;
   id: string;
