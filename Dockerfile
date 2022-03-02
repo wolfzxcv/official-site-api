@@ -12,3 +12,6 @@ COPY . ${APP_ROOT}
 RUN npm run build
 
 CMD [ "npm", "start" ]
+
+# docker build -t [image name] .
+# docker run -d -p process.env.PORT:process.env.PORT [image name] 
