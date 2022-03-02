@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.1.0...v1.2.0) (2022-03-02)
+
+
+### Features
+
+* **contact:** send email ([849c8eb](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/849c8eb121a9f7c79126ccff369732b26eadd1c5))
+* **contact:** use validator in middleware ([a5d61f7](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/a5d61f75b335c04a5bd39870651b9ed2f0628426))
+* **many:** add contact post api, modify checkip logic, fetch client ip logic ([26932cf](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/26932cf9b28716d93746311bc0fd2b27a69a1c44))
+
 ## 1.1.0 (2022-02-25)
 
 
