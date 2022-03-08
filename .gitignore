@@ -3,3 +3,4 @@
 /dist
 /mysql
 /docker-compose.yml
+/info.log

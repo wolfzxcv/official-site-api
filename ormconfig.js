@@ -22,7 +22,7 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['dist/config/typeorm/entities/index.js'],
-    migrations: ['dist/config/typeorm/migrations/index.js']
+    entities: ['dist/src/config/typeorm/entities/index.js'],
+    migrations: ['dist/src/config/typeorm/migrations/index.js']
   }
 ];
