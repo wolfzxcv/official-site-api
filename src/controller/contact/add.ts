@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { IContactInput } from '../../@types';
+import { Contact } from '../../config/typeorm/entities/Contact';
 import { customCodes } from '../../middleware/response/customCodes';
-import { Contact } from '../../orm/entities/Contact';
 import { sendMail } from '../../utils/sendMail';
 
 export const add = async (req: Request, res: Response, next: NextFunction) => {

@@ -9,8 +9,8 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['src/orm/entities/index.ts'],
-    migrations: ['src/orm/migrations/index.ts']
+    entities: ['src/config/typeorm/entities/index.ts'],
+    migrations: ['src/config/typeorm/migrations/index.ts']
   },
   {
     name: 'production',
@@ -22,7 +22,7 @@ module.exports = [
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: ['dist/orm/entities/index.js'],
-    migrations: ['dist/orm/migrations/index.js']
+    entities: ['dist/config/typeorm/entities/index.js'],
+    migrations: ['dist/config/typeorm/migrations/index.js']
   }
 ];

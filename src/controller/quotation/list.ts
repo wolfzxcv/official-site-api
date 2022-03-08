@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import { Quotation } from '../../config/typeorm/entities';
 import { customCodes } from '../../middleware/response/customCodes';
 import { checkLang } from '../../middleware/validation/checkQuery';
-import { Quotation } from '../../orm/entities';
 import { formatOutput, MAX_QUERY } from '../../utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {

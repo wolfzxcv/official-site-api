@@ -2,7 +2,7 @@ import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
 import { ICheckIpRes, IIpApiRes } from '../../@types';
 import { customCodes } from '../../middleware/response/customCodes';
-import { formatExpressIp, formatXForwardedFor } from './format';
+import { formatExpressIp, formatXForwardedFor } from '../../utils/format';
 
 export const checkIp = async (
   req: Request,

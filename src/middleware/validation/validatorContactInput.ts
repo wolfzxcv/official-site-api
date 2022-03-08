@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ICustomResponse } from '../../@types';
+import { checkInput } from '../../utils';
 import { customCodes } from '../response/customCodes';
 
 export const validatorContactInput = (
@@ -11,32 +12,32 @@ export const validatorContactInput = (
 
   const errors = {} as ICustomResponse['errors'];
 
-  if (!name) {
-    errors.name = 'name is required';
+  if (checkInput(name) !== 'valid') {
+    errors.name = `name is ${checkInput(name)}`;
   }
 
-  if (!surname) {
-    errors.surname = 'surname is required';
+  if (checkInput(surname) !== 'valid') {
+    errors.surname = `surname is ${checkInput(surname)}`;
   }
 
-  if (!mobile) {
-    errors.mobile = 'mobile is required';
+  if (checkInput(mobile) !== 'valid') {
+    errors.mobile = `mobile is ${checkInput(mobile)}`;
   }
 
-  if (!email) {
-    errors.email = 'email is required';
+  if (checkInput(email) !== 'valid') {
+    errors.email = `email is ${checkInput(email)}`;
   }
 
-  if (!area) {
-    errors.area = 'area is required';
+  if (checkInput(area) !== 'valid') {
+    errors.area = `area is ${checkInput(area)}`;
   }
 
-  if (!type) {
-    errors.type = 'type is required';
+  if (checkInput(type) !== 'valid') {
+    errors.type = `type is ${checkInput(type)}`;
   }
 
-  if (!iScustomer) {
-    errors.iScustomer = 'iScustomer is required';
+  if (checkInput(iScustomer) !== 'valid') {
+    errors.iScustomer = `iScustomer is ${checkInput(iScustomer)}`;
   }
 
   if (Object.keys(errors).length > 0) {
