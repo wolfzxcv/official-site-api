@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.2.0...v1.3.0) (2022-03-10)
+
+
+### Features
+
+* **swagger, logger:** add swagger and logger(winston) ([7804f96](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/7804f96e2ff284ffbf5e2812d4e4499a6c78ed73))
+
+
+### Bug Fixes
+
+* **path:** modify path ([5dec8c6](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/5dec8c615f00964040bedc5769eb0a687da91194))
+
 ## [1.2.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.1.0...v1.2.0) (2022-03-02)
 
 
