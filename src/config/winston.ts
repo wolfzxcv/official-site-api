@@ -30,7 +30,7 @@ const colors: { [key: string]: IWinstonColors } = {
 winston.addColors(colors);
 
 const format = winston.format.combine(
-  winston.format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+  winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.printf(
     msg => `${[msg.timestamp]} ${msg.level}: ${msg.message}`
   )
@@ -45,7 +45,7 @@ const transports = [
     filename: 'error.log',
     level: 'error'
   }),
-  new winston.transports.File({ filename: 'all.log' })
+  new winston.transports.File({ filename: 'all.log', level: 'debug' })
 ];
 
 export const logger = winston.createLogger({

@@ -39,7 +39,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
     } else {
       res.customResponse(
         customCodes.clientError,
-        'Please input valid lang in query'
+        'Please input valid lang and site in query'
       );
     }
   } catch (err) {

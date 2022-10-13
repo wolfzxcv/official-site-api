@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { logger, morganMiddleware } from './config/winston';
+import { appDataSource } from './data-source';
 import './middleware/response/customResponse';
 import routes from './routes';
 
@@ -30,3 +31,18 @@ app.listen(PORT, () => {
 
   logger.info(message);
 });
+
+(async () => {
+  try {
+    await appDataSource.initialize();
+    const message = 'database ok';
+
+    logger.info(message);
+  } catch (e) {
+    console.log(e);
+
+    const message = 'database connection failed!';
+
+    logger.error(message);
+  }
+})();
