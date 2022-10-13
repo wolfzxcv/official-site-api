@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import { ResponseE } from '../../config/typeorm/entities';
+import { Responsibility } from '../../config/typeorm/entities';
+import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { checkLang } from '../../middleware/validation/checkQuery';
 import { formatOutput, MAX_QUERY } from '../../utils';
@@ -9,12 +9,12 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const queryValue = checkLang(req.query);
     if (!!queryValue) {
-      const responseERepository = getRepository(ResponseE);
+      const responseERepository = appDataSource.getRepository(Responsibility);
       const response = await responseERepository.find({
         where: [{ lang: queryValue }],
         order: {
           showTime: 'DESC',
-          time: 'DESC'
+          createTime: 'DESC'
         },
         take: MAX_QUERY()
       });

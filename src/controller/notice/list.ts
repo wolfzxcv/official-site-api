@@ -1,20 +1,34 @@
 import { NextFunction, Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import { Notice } from '../../config/typeorm/entities';
+import { NoticeG, NoticeM } from '../../config/typeorm/entities';
+import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
-import { checkLang } from '../../middleware/validation/checkQuery';
+import { checkLang, checkSite } from '../../middleware/validation/checkQuery';
 import { formatOutput, MAX_QUERY } from '../../utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const queryValue = checkLang(req.query);
-    if (!!queryValue) {
-      const noticeRepository = getRepository(Notice);
+    const queryLang = checkLang(req.query);
+    const querySite = checkSite(req.query);
+
+    if (!!queryLang && !!querySite) {
+      let noticeRepository;
+
+      switch (querySite) {
+        case 'b':
+          noticeRepository = appDataSource.getRepository(NoticeG);
+          break;
+        case 'm':
+          noticeRepository = appDataSource.getRepository(NoticeM);
+          break;
+        default:
+          noticeRepository = appDataSource.getRepository(NoticeG);
+          break;
+      }
       const notice = await noticeRepository.find({
-        where: [{ lang: queryValue }],
+        where: [{ lang: queryLang }],
         order: {
           showTime: 'DESC',
-          time: 'DESC'
+          createTime: 'DESC'
         },
         take: MAX_QUERY()
       });

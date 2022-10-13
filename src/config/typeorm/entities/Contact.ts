@@ -5,66 +5,59 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 
-@Entity('d_contact')
+@Entity('g_contact')
 export class Contact {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 30,
     default: null
   })
-  name: string;
+  firstName: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 30,
     default: null
   })
-  surname: string;
+  lastName: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 30,
     default: null
   })
   mobile: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 50,
     default: null
   })
   email: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 30,
     default: null
   })
   area: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 50,
     default: null
   })
   type: string;
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 50,
     default: null
   })
-  iScustomer: string;
-
-  @Column({
-    type: 'varchar',
-    length: 255,
-    default: null
-  })
-  login: string;
+  account: string;
 
   @Column({
     type: 'varchar',

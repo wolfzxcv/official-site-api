@@ -8,16 +8,16 @@ export const validatorContactInput = (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, surname, mobile, email, area, type, iScustomer } = req.body;
+  const { firstName, lastName, mobile, email, area, type } = req.body;
 
   const errors = {} as ICustomResponse['errors'];
 
-  if (checkInput(name) !== 'valid') {
-    errors.name = `name is ${checkInput(name)}`;
+  if (checkInput(firstName) !== 'valid') {
+    errors.name = `First Name is ${checkInput(firstName)}`;
   }
 
-  if (checkInput(surname) !== 'valid') {
-    errors.surname = `surname is ${checkInput(surname)}`;
+  if (checkInput(lastName) !== 'valid') {
+    errors.surname = `Last Name is ${checkInput(lastName)}`;
   }
 
   if (checkInput(mobile) !== 'valid') {
@@ -25,19 +25,15 @@ export const validatorContactInput = (
   }
 
   if (checkInput(email) !== 'valid') {
-    errors.email = `email is ${checkInput(email)}`;
+    errors.email = `Email is ${checkInput(email)}`;
   }
 
   if (checkInput(area) !== 'valid') {
-    errors.area = `area is ${checkInput(area)}`;
+    errors.area = `Area is ${checkInput(area)}`;
   }
 
   if (checkInput(type) !== 'valid') {
-    errors.type = `type is ${checkInput(type)}`;
-  }
-
-  if (checkInput(iScustomer) !== 'valid') {
-    errors.iScustomer = `iScustomer is ${checkInput(iScustomer)}`;
+    errors.type = `Type is ${checkInput(type)}`;
   }
 
   if (Object.keys(errors).length > 0) {

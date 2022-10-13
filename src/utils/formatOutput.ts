@@ -4,19 +4,23 @@ import { formatTimestamp } from './formatTimestamp';
 
 export const formatOutput = (data: DataInputFormat[]) => {
   const output: DataOutputFormat[] = data.map(each => {
-    const date = each.showTime ? each.showTime : each.time;
+    const date = each.showTime ? each.showTime : each.createTime;
 
-    const displayTime = formatTimestamp(date);
+    const time = formatTimestamp(date);
 
     const eachData: DataOutputFormat = {
       id: each.id,
       title: each.title,
       content: decodeHtml(each.content),
-      displayTime
+      time
     };
 
-    if (each.out_url) {
-      eachData.url = each.out_url;
+    if (each.externalLink) {
+      eachData.url = each.externalLink;
+    }
+
+    if (each.onTop) {
+      eachData.onTop = !!each.onTop;
     }
 
     return eachData;

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import { Quotation } from '../../config/typeorm/entities';
+import { Market } from '../../config/typeorm/entities';
+import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { checkLang } from '../../middleware/validation/checkQuery';
 import { formatOutput, MAX_QUERY } from '../../utils';
@@ -9,17 +9,17 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const queryValue = checkLang(req.query);
     if (!!queryValue) {
-      const quotationRepository = getRepository(Quotation);
-      const quotation = await quotationRepository.find({
+      const marketRepository = appDataSource.getRepository(Market);
+      const market = await marketRepository.find({
         where: [{ lang: queryValue }],
         order: {
           showTime: 'DESC',
-          time: 'DESC'
+          createTime: 'DESC'
         },
         take: MAX_QUERY()
       });
 
-      const output = formatOutput(quotation);
+      const output = formatOutput(market);
 
       res.customResponse(customCodes.success, 'success', output);
     } else {

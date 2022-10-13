@@ -3,12 +3,10 @@ import 'dotenv/config';
 import express from 'express';
 import 'reflect-metadata';
 import swaggerUi from 'swagger-ui-express';
-import { createConnection, getConnectionOptions } from 'typeorm';
 import { swaggerSpec } from './config/swagger';
 import { logger, morganMiddleware } from './config/winston';
 import './middleware/response/customResponse';
 import routes from './routes';
-import { currentENV } from './utils';
 
 const app = express();
 
@@ -32,25 +30,3 @@ app.listen(PORT, () => {
 
   logger.info(message);
 });
-
-(async () => {
-  try {
-    const options = await getConnectionOptions(currentENV);
-
-    await createConnection({
-      ...options,
-      name: 'default',
-      synchronize: false
-    });
-
-    const message = 'database ok';
-
-    logger.info(message);
-  } catch (e) {
-    console.log(e);
-
-    const message = 'database connection failed!';
-
-    logger.error(message);
-  }
-})();

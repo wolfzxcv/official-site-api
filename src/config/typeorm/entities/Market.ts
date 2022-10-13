@@ -1,3 +1,4 @@
+import { Locales } from 'src/@types';
 import {
   Column,
   Entity,
@@ -5,13 +6,13 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 
-@Entity('d_quotation')
-export class Quotation {
+@Entity('g_market')
+export class Market {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: 'int', default: 0 })
-  lang: number;
+  @Column({ type: 'varchar', default: 'cn' })
+  lang: Locales;
 
   @Column({
     type: 'varchar',
@@ -21,22 +22,7 @@ export class Quotation {
   title: string;
 
   @Column({
-    type: 'varchar',
-    length: 100,
-    default: ''
-  })
-  path: string;
-
-  @Column({
-    type: 'varchar',
-    length: 200,
-    default: ''
-  })
-  abstract: string;
-
-  @Column({
-    type: 'text',
-    default: ''
+    type: 'longtext'
   })
   content: string;
 
@@ -44,11 +30,17 @@ export class Quotation {
   @UpdateDateColumn({
     default: '0000-00-00 00:00:00'
   })
-  time: Date;
+  createTime: Date;
 
   @Column()
   @UpdateDateColumn({
     nullable: true
   })
   showTime: Date;
+
+  @Column()
+  @UpdateDateColumn({
+    default: '0000-00-00 00:00:00'
+  })
+  updateTime: Date;
 }

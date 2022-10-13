@@ -1,12 +1,11 @@
 export type IContactInput = {
-  name: string;
-  surname: string;
+  firstName: string;
+  lastName: string;
   mobile: string;
   email: string;
   area: string;
   type: string;
-  iScustomer: string;
-  login?: string;
+  account?: string;
   content?: string;
   time?: Date;
 };

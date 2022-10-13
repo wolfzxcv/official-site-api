@@ -1,1 +1,1 @@
-export type Locales = 'cn' | 'ar' | 'en' | 'ms' | 'id' | 'vi' | 'zh';
+export type Locales = 'cn' | 'en' | 'zh';

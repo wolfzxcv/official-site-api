@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { list } from '../../controller/quotation';
+import { list } from '../../controller/responsibility';
 
 const router = Router();
 

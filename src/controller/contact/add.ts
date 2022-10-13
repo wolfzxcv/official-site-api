@@ -1,28 +1,27 @@
 import { NextFunction, Request, Response } from 'express';
-import { getRepository } from 'typeorm';
 import { IContactInput } from '../../@types';
 import { Contact } from '../../config/typeorm/entities/Contact';
+import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { sendMail } from '../../utils/sendMail';
 
 export const add = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const newInput: IContactInput = {
-      name: req.body.name,
-      surname: req.body.surname,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       mobile: req.body.mobile,
       email: req.body.email,
       area: req.body.area,
       type: req.body.type,
-      iScustomer: req.body.iScustomer,
-      login: req.body.login,
+      account: req.body.account,
       content: req.body.content,
       time: new Date()
     };
 
     await sendMail(newInput);
 
-    const contactRepository = getRepository(Contact);
+    const contactRepository = appDataSource.getRepository(Contact);
 
     await contactRepository.save(newInput);
 

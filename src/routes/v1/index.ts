@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import checkIp from './checkIp';
 import contact from './contact';
-import focus from './focus';
+import market from './market';
 import news from './news';
 import notice from './notice';
-import quotation from './quotation';
-import response from './response';
+import response from './responsibility';
 
 const router = Router();
 
@@ -34,9 +33,9 @@ router.use('/checkIp', checkIp);
  *       in: body
  *       type: object
  *       properties:
- *         name:
+ *         firstName:
  *           type: string
- *         surname:
+ *         lastName:
  *           type: string
  *         mobile:
  *           type: string
@@ -46,15 +45,13 @@ router.use('/checkIp', checkIp);
  *           type: string
  *         type:
  *           type: string
- *         iScustomer:
- *           type: string
- *         login:
+ *         account:
  *           type: string
  *         content:
  *           type: string
  *       required:
- *           - name
- *           - surname
+ *           - firstName
+ *           - lastName
  *           - mobile
  *           - email
  *           - area
@@ -69,26 +66,6 @@ router.use('/checkIp', checkIp);
  */
 
 router.use('/contact', contact);
-
-/**
- * @swagger
- * /focus:
- *   get:
- *     summary: 財經新聞
- *     parameters:
- *     - name: lang
- *       in: query
- *       required: true
- *       type: string
- *     responses:
- *       200:
- *         description: OK
- *       400:
- *         description: Client error
- *       500:
- *         description: Server error
- */
-router.use('/focus', focus);
 
 /**
  * @swagger
@@ -115,6 +92,10 @@ router.use('/news', news);
  *       in: query
  *       required: true
  *       type: string
+ *     - name: site
+ *       in: query
+ *       required: true
+ *       type: string
  *     responses:
  *       200:
  *         description: OK
@@ -127,7 +108,7 @@ router.use('/notice', notice);
 
 /**
  * @swagger
- * /quotation:
+ * /market:
  *   get:
  *     summary: 市場分析
  *     parameters:
@@ -143,7 +124,7 @@ router.use('/notice', notice);
  *       500:
  *         description: Server error
  */
-router.use('/quotation', quotation);
+router.use('/market', market);
 
 /**
  * @swagger

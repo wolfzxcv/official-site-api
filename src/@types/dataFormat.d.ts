@@ -1,3 +1,5 @@
+import { Locales } from './locales';
+
 type DataCommonFormat = {
   id: number;
   title: string;
@@ -5,15 +7,16 @@ type DataCommonFormat = {
 };
 
 export interface DataInputFormat extends DataCommonFormat {
-  lang: number;
-  path?: string;
-  out_url?: string;
-  abstract: string;
-  time: Date;
+  lang: Locales;
+  externalLink?: string;
+  onTop?: string;
+  createTime: Date;
+  updateTime: Date;
   showTime: Date;
 }
 
 export interface DataOutputFormat extends DataCommonFormat {
   url?: string;
-  displayTime: string;
+  onTop?: boolean;
+  time: string;
 }

@@ -12,16 +12,15 @@ export const sendMail = async (content: IContactInput) => {
     });
 
     const data = [
-      `name: ${content.name} ${content.surname}`,
+      `name: ${content.firstName} ${content.lastName}`,
       `tel: ${content.mobile}`,
       `email: ${content.email}`,
       `area: ${content.area}`,
-      `type: ${content.type}`,
-      `customer?: ${content.iScustomer}`
+      `type: ${content.type}`
     ];
 
-    if (content.login) {
-      data.push(`account: ${content.login}`);
+    if (content.account) {
+      data.push(`account: ${content.account}`);
     }
 
     if (content.content) {

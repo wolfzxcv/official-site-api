@@ -1,3 +1,4 @@
+import { Locales } from 'src/@types';
 import {
   Column,
   Entity,
@@ -5,13 +6,13 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 
-@Entity('d_notice')
-export class Notice {
+@Entity('g_responsibility')
+export class Responsibility {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: 'int', default: 0 })
-  lang: number;
+  @Column({ type: 'varchar', default: 'cn' })
+  lang: Locales;
 
   @Column({
     type: 'varchar',
@@ -21,15 +22,7 @@ export class Notice {
   title: string;
 
   @Column({
-    type: 'varchar',
-    length: 200,
-    default: ''
-  })
-  abstract: string;
-
-  @Column({
-    type: 'longtext',
-    default: ''
+    type: 'longtext'
   })
   content: string;
 
@@ -37,11 +30,25 @@ export class Notice {
   @UpdateDateColumn({
     default: '0000-00-00 00:00:00'
   })
-  time: Date;
+  createTime: Date;
 
   @Column()
   @UpdateDateColumn({
     nullable: true
   })
   showTime: Date;
+
+  @Column()
+  @UpdateDateColumn({
+    default: '0000-00-00 00:00:00'
+  })
+  updateTime: Date;
+
+  @Column()
+  @UpdateDateColumn({
+    type: 'varchar',
+    length: 255,
+    default: ''
+  })
+  externalLink: string;
 }

@@ -1,25 +1,35 @@
+import { Sites } from 'src/@types/sites';
 import { Locales } from '../../@types';
 
-const allLangs = [
-  { code: 'cn', value: 886 },
-  { code: 'ar', value: 966 },
-  { code: 'en', value: 1 },
-  { code: 'ms', value: 60 },
-  { code: 'id', value: 62 },
-  { code: 'vi', value: 84 },
-  { code: 'zh', value: 86 }
-];
+const allowLangs = ['en', 'cn', 'zh'];
 
-type IQuery = {
+const allowSites = ['g', 'b', 'm'];
+
+export type IQuery = {
   lang?: Locales | undefined;
+  site?: Sites | undefined;
 };
 
 export const checkLang = (query: IQuery) => {
   const lang = query?.lang;
   if (lang) {
-    const hasLang = allLangs.find(each => each.code === lang);
+    const hasLang = allowLangs.includes(lang);
     if (!!hasLang) {
-      return hasLang.value;
+      return lang;
+    } else {
+      return undefined;
+    }
+  } else {
+    return undefined;
+  }
+};
+
+export const checkSite = (query: IQuery) => {
+  const site = query?.site;
+  if (site) {
+    const hasSite = allowSites.includes(site);
+    if (!!hasSite) {
+      return site;
     } else {
       return undefined;
     }
