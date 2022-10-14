@@ -15,7 +15,7 @@ export const appDataSource = new DataSource({
     currentENV === 'production'
       ? process.env.DB_HOST_PROD
       : process.env.DB_HOST_DEV,
-  port: Number(process.env.DB_PORT!),
+  port: Number(process.env.DB_PORT || 39307),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,

@@ -17,18 +17,24 @@ type IResponseFormat = {
   zh = 繁體中文
   en = 英語
 
-- 因應"後台"增加日期選擇器, API 回傳 displayTime 規則更新.
+- API 回傳 time 的規則
 
   - 如果該筆資料, 有 showTime,則回傳 showTime
   - 若無,則回傳 createTime
   - createTime = 文章創建時間, showTime = 日期選擇器時間
+
+- Order of priority
+  - onTop === 1
+  - showTime(DESC)
+  - createTime(DESC)
 
 ```typescript=
 type DataOutputFormat = {
   id: number;
   title: string;
   content: string;
-  url?: string;  // 目前僅有 企業責任 可能有這個參數
+  url?: string;  // 目前僅有 企業責任 會有這個參數
+  onTop?: boolean;  // 目前僅有 平台公告 會有這個參數
   time: string;
 };
 ```
@@ -58,10 +64,10 @@ type DataOutputFormat = {
 | Method | GET         |
 | path   | **/notice** |
 | param  | lang        |
-|        | site        |
+| param  | site        |
 | table  | \*\_notice  |
 
-## 5.聯繫我們
+## 4.聯繫我們
 
 | Item   | Value        |
 | ------ | ------------ |
@@ -87,7 +93,7 @@ type IContactInput = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
-## 6.取得即時新聞
+## 5.取得即時新聞
 
 | Item   | Value     |
 | ------ | --------- |
@@ -97,7 +103,6 @@ type IContactInput = {
 
 ```typescript=
 type INewsRes = {
-  author: string | null;
   imageUrl: string | null;
   id: string;
   createAt: number;
@@ -105,7 +110,7 @@ type INewsRes = {
 };
 ```
 
-## 7.偵測 IP 來源地區
+## 6.偵測 IP 來源地區
 
 | Item   | Value        |
 | ------ | ------------ |

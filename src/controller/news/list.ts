@@ -13,7 +13,6 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
       const resultData = result.data;
 
       const news: INewsRes[] = resultData.map(x => ({
-        author: x.author.twitter_nick || null,
         imageUrl: x.author.photo_url || null,
         id: x.id,
         createAt: x.createAt,

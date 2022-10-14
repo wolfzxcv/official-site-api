@@ -1,13 +1,15 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
+import path from 'path';
 import 'reflect-metadata';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { logger, morganMiddleware } from './config/winston';
 import { appDataSource } from './data-source';
 import './middleware/response/customResponse';
-import routes from './routes';
+import apiRoutes from './routes/api';
+import viewRoutes from './routes/view';
 
 const app = express();
 
@@ -19,9 +21,18 @@ app.use(morganMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', routes);
+app.use('/api', apiRoutes);
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Set View Engine - EJS template
+app.set('view-engine', 'ejs');
+// View engine directory
+app.set('views', path.resolve(__dirname, './views'));
+// Serve static files from template
+app.use(express.static(__dirname + '/template'));
+// Set View routes
+app.use('/', viewRoutes);
 
 app.enable('trust proxy');
 
@@ -32,6 +43,7 @@ app.listen(PORT, () => {
   logger.info(message);
 });
 
+// DB status
 (async () => {
   try {
     await appDataSource.initialize();

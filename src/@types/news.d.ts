@@ -12,7 +12,6 @@ export type IDailyFxAsiaRes = {
 };
 
 export type INewsRes = {
-  author: string | null;
   imageUrl: string | null;
   id: string;
   createAt: number;

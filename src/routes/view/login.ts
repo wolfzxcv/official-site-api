@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import v1 from './v1';
+import { login } from '../../controller/view/login';
 
 const router = Router();
 
-router.use(`/`, v1);
+router.get('/', [], login);
 
 export default router;
