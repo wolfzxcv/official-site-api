@@ -1,9 +1,52 @@
 <%- include('./header.ejs') %>
   <div class="row mx-0 flex-nowrap">
-
     <%- include('./nav.ejs') %>
       <div class="col py-3">
-        聯絡我們
+        <h1>聯絡我們</h1>
+        <table class="table table-bordered">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>名字</th>
+              <th>姓氏</th>
+              <th>手機</th>
+              <th>Email</th>
+              <th>地區</th>
+              <th>類別</th>
+              <th>內容</th>
+              <th>留言時間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.map((each)=> { %>
+              <tr>
+                <td class="text-nowrap">
+                  <%= each.firstName %>
+                </td class="text-nowrap">
+                <td>
+                  <%= each.lastName %>
+                </td>
+                <td>
+                  <%= each.mobile %>
+                </td>
+                <td>
+                  <%= each.email %>
+                </td>
+                <td>
+                  <%= each.area %>
+                </td>
+                <td>
+                  <%= each.type %>
+                </td>
+                <td>
+                  <%= each.content %>
+                </td>
+                <td class="text-nowrap">
+                  <%= each.time %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
       </div>
   </div>
   <%- include('./footer.ejs') %>

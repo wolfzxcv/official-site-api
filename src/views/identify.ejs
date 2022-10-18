@@ -1,0 +1,24 @@
+<span id='verify' onclick="getVerify()"></span>
+<script>
+  window.onload = () => {
+    getVerify()
+  }
+  function getVerify() {
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('GET', '/verifyCode?t=' + Math.random())
+
+    // set response format
+    xhr.responseType = 'json'
+
+    xhr.send()
+
+    xhr.onload = () => {
+      // get JSON response
+      const { data: { data } } = xhr.response
+
+      document.getElementById('verify').innerHTML = data
+    }
+
+  }
+</script>

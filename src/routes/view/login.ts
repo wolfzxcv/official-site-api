@@ -1,8 +1,11 @@
 import { Router } from 'express';
-import { login } from '../../controller/view/login';
+import { login, loginFunction } from '../../controller/view/login';
+import { checkNotAuth } from '../../middleware/validation/checkAuth';
 
 const router = Router();
 
-router.get('/', [], login);
+router.get('/', [checkNotAuth], login);
+
+router.post('/login', [], loginFunction);
 
 export default router;

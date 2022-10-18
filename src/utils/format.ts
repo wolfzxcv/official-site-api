@@ -1,4 +1,4 @@
-export const formatXForwardedFor = (value: unknown) => {
+export const formatXForwardedFor = (value: string | undefined) => {
   if (value) {
     if (typeof value === 'string') {
       const output = value.split(',');

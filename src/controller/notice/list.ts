@@ -11,17 +11,13 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
     const querySite = checkSite(req.query);
 
     if (!!queryLang && !!querySite) {
-      let noticeRepository;
+      let noticeRepository = appDataSource.getRepository(NoticeG);
 
       switch (querySite) {
-        case 'b':
-          noticeRepository = appDataSource.getRepository(NoticeG);
-          break;
         case 'm':
           noticeRepository = appDataSource.getRepository(NoticeM);
           break;
         default:
-          noticeRepository = appDataSource.getRepository(NoticeG);
           break;
       }
       const notice = await noticeRepository.find({

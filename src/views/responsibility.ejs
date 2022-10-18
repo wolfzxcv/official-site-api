@@ -1,9 +1,45 @@
 <%- include('./header.ejs') %>
   <div class="row mx-0 flex-nowrap">
-
     <%- include('./nav.ejs') %>
       <div class="col py-3">
-        企業責任
+        <h1>企業責任</h1>
+        <table class="table table-bordered">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>語系</th>
+              <th>標題</th>
+              <th>展示時間</th>
+              <th>創建時間</th>
+              <th>更新時間</th>
+              <th>工具</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.map((each)=> { %>
+              <tr>
+                <td class="text-nowrap">
+                  <%= each.lang %>
+                </td class="text-nowrap">
+                <td>
+                  <%= each.title %>
+                </td>
+                <td>
+                  <%= each.showTime %>
+                </td>
+                <td>
+                  <%= each.createTime %>
+                </td>
+                <td>
+                  <%= each.updateTime %>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success">編輯</button>
+                  <button type="button" class="btn btn-danger">刪除</button>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
       </div>
   </div>
   <%- include('./footer.ejs') %>

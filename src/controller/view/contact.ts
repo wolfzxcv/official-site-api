@@ -1,5 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
+import { Contact } from '../../config/typeorm/entities';
+import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
+import { formatTimestamp } from '../../utils';
 
 export const contact = async (
   req: Request,
@@ -7,9 +10,23 @@ export const contact = async (
   next: NextFunction
 ) => {
   try {
-    return res.render('contact.ejs', {});
+    const contactRepository = appDataSource.getRepository(Contact);
+    const contacts = await contactRepository.find({
+      order: {
+        time: 'DESC'
+      }
+    });
+
+    const data = contacts.map(each => ({
+      ...each,
+      time: formatTimestamp(each.time).replace(',', '')
+    }));
+
+    return res.render('contact.ejs', {
+      data,
+      name: req.session.user?.username || 'Guest?'
+    });
   } catch (err) {
-    console.log('err', String(err));
     next(res.customResponse(customCodes.serverError, 'error', null, err));
   }
 };

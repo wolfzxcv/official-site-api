@@ -3,7 +3,7 @@ import { Locales } from '../../@types';
 
 const allowLangs = ['en', 'cn', 'zh'];
 
-const allowSites = ['g', 'b', 'm'];
+const allowSites = ['g', 'm'];
 
 export type IQuery = {
   lang?: Locales | undefined;
