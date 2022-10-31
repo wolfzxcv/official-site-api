@@ -1,3 +1,4 @@
+import flash from 'connect-flash';
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
@@ -25,10 +26,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'secret',
-    resave: true,
-    saveUninitialized: true
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false
   })
 );
+
+app.use(flash());
 
 app.use('/api', apiRoutes);
 

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { params } from '../../config/params';
 import { Contact } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
@@ -24,7 +25,7 @@ export const contact = async (
 
     return res.render('contact.ejs', {
       data,
-      name: req.session.user?.username || 'Guest?'
+      name: req.session.user?.username || params.defaultName
     });
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));

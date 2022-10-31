@@ -11,7 +11,7 @@ export const login = async (
   next: NextFunction
 ) => {
   try {
-    return res.render('login.ejs', { error: '' });
+    return res.render('login.ejs', { error: req.flash('error') });
   } catch (err) {
     console.log('err', String(err));
     next(res.customResponse(customCodes.serverError, 'error', null, err));
@@ -26,7 +26,8 @@ export const loginFunction = async (
   try {
     if (req.body.username && req.body.password && req.body.code) {
       if (req.body.code !== req.session.captcha) {
-        return res.render('login.ejs', { error: '驗證碼錯誤' });
+        req.flash('error', '驗證碼錯誤');
+        res.redirect('/');
       }
       const userRepository = appDataSource.getRepository(User);
 
@@ -66,15 +67,16 @@ export const loginFunction = async (
 
           return res.redirect('/notice/g');
         } else {
-          return res.render('login.ejs', { error: '密碼錯誤' });
+          req.flash('error', '密碼錯誤');
+          res.redirect('/');
         }
       } else {
-        return res.render('login.ejs', {
-          error: `找不到該帳號  ${req.body.username}`
-        });
+        req.flash('error', `找不到該帳號  ${req.body.username}`);
+        res.redirect('/');
       }
     } else {
-      return res.render('login.ejs', { error: '請輸入帳號、密碼及驗證碼' });
+      req.flash('error', '請輸入帳號、密碼及驗證碼');
+      res.redirect('/');
     }
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));

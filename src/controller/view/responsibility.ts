@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { params } from '../../config/params';
 import { Responsibility } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
@@ -28,7 +29,7 @@ export const responsibility = async (
 
     return res.render('responsibility.ejs', {
       data,
-      name: req.session.user?.username || 'Guest?'
+      name: req.session.user?.username || params.defaultName
     });
   } catch (err) {
     console.log('err', String(err));

@@ -2,10 +2,8 @@
   <div class="d-flex flex-column align-items-center justify-content-between px-3 pt-2 text-white min-vh-100">
     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
       <li>
-        <a href="#submenu0" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-          國際
-        </a>
-        <ul class="collapse nav flex-column ms-1" id="submenu0" data-bs-parent="#menu">
+        <strong>國際</strong>
+        <ul class="nav flex-column ms-1">
           <li class="w-100">
             <a href="/notice/g" class="nav-link px-0 text-nowrap">
               <i class="fas fa-bullhorn"></i>
@@ -32,11 +30,9 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-          金業
-        </a>
-        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+      <li class="border-warning border-top mt-3 pt-3">
+        <strong>金業</strong>
+        <ul class="nav flex-column ms-1">
           <li class="w-100">
             <a href="/notice/m" class="nav-link px-0 text-nowrap">
               <i class="fas fa-bullhorn"></i>
@@ -45,12 +41,18 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="/log" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-table"></i>
-          <span class="ms-1 d-none d-sm-inline">操作</span>紀錄
-        </a>
+      <li class="border-warning border-top mt-3 pt-3">
+        <strong class="text-center">其他</strong>
+        <ul class="nav flex-column ms-1">
+          <li class="w-100">
+            <a href="/log" class="nav-link px-0 align-middle">
+              <i class="fas fa-camera-retro"></i>
+              <span class="d-none d-sm-inline">操作紀錄</span>
+            </a>
+          </li>
+        </ul>
       </li>
+
     </ul>
 
     <div class="dropdown pb-4">

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { params } from '../../config/params';
 import { NoticeG, NoticeM } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
@@ -49,7 +50,7 @@ export const notice = async (
 
     return res.render('notice.ejs', {
       data,
-      name: req.session.user?.username || 'Guest?',
+      name: req.session.user?.username || params.defaultName,
       siteName
     });
   } catch (err) {
