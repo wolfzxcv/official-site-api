@@ -25,7 +25,8 @@ export const contact = async (
 
     return res.render('contact.ejs', {
       data,
-      name: req.session.user?.username || params.defaultName
+      name: req.session.user?.username || params.defaultName,
+      ...params
     });
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));

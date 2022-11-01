@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { market } from '../../controller/view/market';
-import { checkAuth } from '../../middleware/validation/checkAuth';
+import { market, marketCreate } from '../../controller/view/market';
 
 const router = Router();
 
-router.get('/', [checkAuth], market);
+router.get('/', [], market);
+
+router.get('/create', [], marketCreate);
 
 export default router;

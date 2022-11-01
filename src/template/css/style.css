@@ -3,4 +3,19 @@
   padding-top: 250px;
   width: 300px;
   margin: 0 auto;
+}
+
+.styled-switch > input {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.form-switch {
+  padding-left: 3rem;
+  padding-top: 0.5rem;
+}
+
+.ck-editor__editable[role='textbox'] {
+  /* editing area */
+  min-height: 300px;
 } /*# sourceMappingURL=style.css.map */

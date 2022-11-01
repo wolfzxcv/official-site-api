@@ -3,7 +3,7 @@ import { params } from '../../config/params';
 import { NoticeG, NoticeM } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
-import { formatTimestamp } from '../../utils';
+import { formatLangDisplay, formatTimestamp } from '../../utils';
 
 export const notice = async (
   req: Request,
@@ -30,12 +30,14 @@ export const notice = async (
 
     const data = notices.map(each => ({
       ...each,
+      lang: formatLangDisplay(each.lang),
       showTime: formatTimestamp(each.showTime).slice(0, 10),
       createTime: formatTimestamp(each.createTime).replace(',', ''),
       updateTime: formatTimestamp(each.updateTime).replace(',', '')
     }));
 
     let siteName = '';
+    const site = req.params.id;
 
     switch (req.params.id) {
       case 'g':
@@ -51,7 +53,9 @@ export const notice = async (
     return res.render('notice.ejs', {
       data,
       name: req.session.user?.username || params.defaultName,
-      siteName
+      siteName,
+      site,
+      ...params
     });
   } catch (err) {
     console.log('err', String(err));

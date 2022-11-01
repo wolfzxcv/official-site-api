@@ -3,7 +3,7 @@ import { params } from '../../config/params';
 import { Responsibility } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
-import { formatTimestamp } from '../../utils';
+import { formatLangDisplay, formatTimestamp } from '../../utils';
 
 export const responsibility = async (
   req: Request,
@@ -22,6 +22,7 @@ export const responsibility = async (
 
     const data = responsibilities.map(each => ({
       ...each,
+      lang: formatLangDisplay(each.lang),
       showTime: formatTimestamp(each.showTime).slice(0, 10),
       createTime: formatTimestamp(each.createTime).replace(',', ''),
       updateTime: formatTimestamp(each.updateTime).replace(',', '')
@@ -29,7 +30,8 @@ export const responsibility = async (
 
     return res.render('responsibility.ejs', {
       data,
-      name: req.session.user?.username || params.defaultName
+      name: req.session.user?.username || params.defaultName,
+      ...params
     });
   } catch (err) {
     console.log('err', String(err));

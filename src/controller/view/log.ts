@@ -5,7 +5,8 @@ import { customCodes } from '../../middleware/response/customCodes';
 export const log = async (req: Request, res: Response, next: NextFunction) => {
   try {
     return res.render('log.ejs', {
-      name: req.session.user?.username || params.defaultName
+      name: req.session.user?.username || params.defaultName,
+      ...params
     });
   } catch (err) {
     console.log('err', String(err));

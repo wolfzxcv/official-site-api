@@ -2,8 +2,19 @@
   <div class="row mx-0 flex-nowrap">
     <%- include('./nav.ejs') %>
       <div class="col py-3">
-        <h1>平台公告(<%= siteName %>)</h1>
-        <table class="table table-bordered">
+        <div class="d-flex justify-content-between mb-3">
+          <h1>
+            <%= notice %>(<%= siteName %>)
+          </h1>
+          <a href="/notice/create?site=<%= site %>" class="btn btn-outline-primary" style="line-height: 2.2"
+            type="button">
+            <%= create %>
+              <%= notice %>(
+                <%= siteName %>
+                  )
+          </a>
+        </div>
+        <table class="table table-bordered table-hover">
           <thead class="bg-primary text-white">
             <tr>
               <th>語系</th>
@@ -37,8 +48,14 @@
                   <%= each.updateTime %>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success">編輯</button>
-                  <button type="button" class="btn btn-danger">刪除</button>
+                  <a href="/notice/update?id=<%= each.id %>&site=<%= site %>" type="button"
+                    class="btn btn-outline-success">
+                    編輯
+                  </a>
+                  <a href="/notice/delete?id=<%= each.id %>&site=<%= site %>" type="button"
+                    class="btn btn-outline-danger">
+                    刪除
+                  </a>
                 </td>
               </tr>
               <% }) %>

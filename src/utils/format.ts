@@ -1,3 +1,5 @@
+import { Locales } from '../@types';
+
 export const formatXForwardedFor = (value: string | undefined) => {
   if (value) {
     if (typeof value === 'string') {
@@ -12,3 +14,16 @@ export const formatXForwardedFor = (value: string | undefined) => {
 };
 
 export const formatExpressIp = (rawIp: string) => rawIp.split(':').pop();
+
+export const formatLangDisplay = (locale: Locales) => {
+  switch (locale) {
+    case 'cn':
+      return '簡';
+    case 'zh':
+      return '繁';
+    case 'en':
+      return '英';
+    default:
+      return null;
+  }
+};
