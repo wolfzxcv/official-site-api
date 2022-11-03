@@ -1,9 +1,9 @@
 import { Locales } from 'src/@types';
 import {
   Column,
+  CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity('g_market')
@@ -16,8 +16,7 @@ export class Market {
 
   @Column({
     type: 'varchar',
-    length: 255,
-    default: ''
+    length: 255
   })
   title: string;
 
@@ -27,20 +26,16 @@ export class Market {
   content: string;
 
   @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
-  })
-  createTime: Date;
-
-  @Column()
-  @UpdateDateColumn({
-    nullable: true
-  })
   showTime: Date;
 
   @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
+  @CreateDateColumn({
+    default: new Date()
+  })
+  createTime: Date;
+
+  @Column({
+    nullable: true
   })
   updateTime: Date;
 }

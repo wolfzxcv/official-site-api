@@ -51,14 +51,12 @@ CKEDITOR.ClassicEditor.create(document.getElementById('editor'), {
       'horizontalLine',
       'pageBreak',
       '|',
-      'textPartLanguage',
-      '|',
       'sourceEditing'
     ],
     shouldNotGroupWhenFull: true
   },
   // Changing the language of the interface requires loading the language file using the <script> tag.
-  // language: 'es',
+  language: 'zh',
   list: {
     properties: {
       styles: true,
@@ -235,4 +233,24 @@ CKEDITOR.ClassicEditor.create(document.getElementById('editor'), {
     // from a local file system (file://) - load this site via HTTP server if you enable MathType
     'MathType'
   ]
-});
+})
+  .then(editor => {
+    theEditor = editor; // Save for later use.
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+function resetEditor() {
+  theEditor.setData('');
+}
+
+function setEditor(val) {
+  console.log('setEditor', typeof val);
+
+  function convert(str) {
+    str = str.replace(/&amp;/g, '&');
+    return str;
+  }
+  theEditor.setData(convert(val));
+}

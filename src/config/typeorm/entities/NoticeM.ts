@@ -1,9 +1,9 @@
 import { Locales } from 'src/@types';
 import {
   Column,
+  CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity('m_notice')
@@ -16,8 +16,7 @@ export class NoticeM {
 
   @Column({
     type: 'varchar',
-    length: 255,
-    default: ''
+    length: 255
   })
   title: string;
 
@@ -27,27 +26,22 @@ export class NoticeM {
   content: string;
 
   @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
+  showTime: Date;
+
+  @Column({
+    type: 'tinyint',
+    default: 0
+  })
+  onTop: string;
+
+  @Column()
+  @CreateDateColumn({
+    default: new Date()
   })
   createTime: Date;
 
-  @Column()
-  @UpdateDateColumn({
+  @Column({
     nullable: true
   })
-  showTime: Date;
-
-  @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
-  })
   updateTime: Date;
-
-  @Column()
-  @UpdateDateColumn({
-    type: 'tinyint',
-    default: '0'
-  })
-  onTop: string;
 }

@@ -1,0 +1,51 @@
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="deleteModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">刪除確認</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-danger">
+        <p>確定刪除 <strong></strong> ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="confirm-deletion">確定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const deleteModal = document.getElementById('deleteModal')
+  if (deleteModal) {
+    deleteModal.addEventListener('show.bs.modal', event => {
+      // Button that triggered the modal
+      const button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      const title = button.getAttribute('data-bs-title')
+      const api = button.getAttribute('data-bs-api')
+
+      const modalTitleTarget = deleteModal.querySelector('.modal-body strong')
+
+      modalTitleTarget.textContent = title
+
+      const confirmButton = deleteModal.querySelector('#confirm-deletion')
+
+      confirmButton.onclick = async function () {
+
+        try {
+          await axios.delete(api);
+          var modal = bootstrap.Modal.getInstance(deleteModal)
+          modal.hide();
+          window.location.reload();
+        } catch {
+          console.log('error')
+        }
+
+      };
+    })
+  }
+</script>

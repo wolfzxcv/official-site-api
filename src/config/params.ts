@@ -10,5 +10,6 @@ export const params = {
   edit: '編輯',
   delete: '刪除',
   home: '/',
-  pageAfterLogin: '/log'
+  pageAfterLogin: '/log',
+  messageTime: 5000
 };

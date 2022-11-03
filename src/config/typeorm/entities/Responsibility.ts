@@ -1,9 +1,9 @@
 import { Locales } from 'src/@types';
 import {
   Column,
+  CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity('g_responsibility')
@@ -16,8 +16,7 @@ export class Responsibility {
 
   @Column({
     type: 'varchar',
-    length: 255,
-    default: ''
+    length: 255
   })
   title: string;
 
@@ -27,28 +26,23 @@ export class Responsibility {
   content: string;
 
   @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
-  })
-  createTime: Date;
-
-  @Column()
-  @UpdateDateColumn({
-    nullable: true
-  })
   showTime: Date;
 
-  @Column()
-  @UpdateDateColumn({
-    default: '0000-00-00 00:00:00'
-  })
-  updateTime: Date;
-
-  @Column()
-  @UpdateDateColumn({
+  @Column({
     type: 'varchar',
     length: 255,
     default: ''
   })
   externalLink: string;
+
+  @Column()
+  @CreateDateColumn({
+    default: new Date()
+  })
+  createTime: Date;
+
+  @Column({
+    nullable: true
+  })
+  updateTime: Date;
 }
