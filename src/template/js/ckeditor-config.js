@@ -246,11 +246,9 @@ function resetEditor() {
 }
 
 function setEditor(val) {
-  console.log('setEditor', typeof val);
+  const textArea = document.createElement('textarea');
+  textArea.innerHTML = val;
+  const output = textArea.value;
 
-  function convert(str) {
-    str = str.replace(/&amp;/g, '&');
-    return str;
-  }
-  theEditor.setData(convert(val));
+  theEditor.setData(output);
 }

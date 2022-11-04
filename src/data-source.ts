@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import {
   Contact,
+  Log,
   Market,
   NoticeG,
   NoticeM,
@@ -22,7 +23,7 @@ export const appDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: [Contact, Market, NoticeG, NoticeM, Responsibility, User],
+  entities: [Contact, Log, Market, NoticeG, NoticeM, Responsibility, User],
   subscribers: [],
   migrations: []
 });

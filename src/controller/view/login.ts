@@ -26,7 +26,8 @@ export const loginFunction = async (
 ) => {
   try {
     if (req.body.username && req.body.password && req.body.code) {
-      if (req.body.code !== req.session.captcha) {
+      const code = req.body.code.toUpperCase();
+      if (code !== req.session.captcha) {
         req.flash('error', '驗證碼錯誤');
         res.redirect(params.home);
       }

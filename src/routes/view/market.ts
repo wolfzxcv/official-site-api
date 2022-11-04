@@ -4,18 +4,22 @@ import {
   marketCreate,
   marketCreateFunction,
   marketDeleteFunction,
-  marketUpdate
+  marketUpdate,
+  marketUpdateFunction
 } from '../../controller/view/market';
+import { checkAuth } from '../../middleware/validation/checkAuth';
 
 const router = Router();
 
-router.get('/', [], market);
+router.get('/', [checkAuth], market);
 
-router.get('/create', [], marketCreate);
+router.get('/create', [checkAuth], marketCreate);
 
 router.post('/create', [], marketCreateFunction);
 
-router.get('/update/:id', [], marketUpdate);
+router.get('/update/:id', [checkAuth], marketUpdate);
+
+router.patch('/update/:id', [], marketUpdateFunction);
 
 router.delete('/delete/:id', [], marketDeleteFunction);
 

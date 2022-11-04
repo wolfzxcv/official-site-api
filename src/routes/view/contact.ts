@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { contact } from '../../controller/view/contact';
-// import { checkAuth } from '../../middleware/validation/checkAuth';
+import { checkAuth } from '../../middleware/validation/checkAuth';
 
 const router = Router();
 
-router.get('/', [], contact);
+router.get('/', [checkAuth], contact);
 
 export default router;

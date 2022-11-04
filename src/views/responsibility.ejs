@@ -2,60 +2,64 @@
   <div class="row mx-0 flex-nowrap">
     <%- include('./nav.ejs') %>
       <div class="col py-3">
-        <div class="d-flex justify-content-between mb-3">
-          <h1>
-            <%= responsibility %>
-          </h1>
-          <a href="/responsibility/create" class="btn btn-outline-primary" style="line-height: 2.2" type="button">
-            <%= create %>
+        <%- include('./alert-message.ejs') %>
+          <div class="d-flex justify-content-between mb-3">
+            <h1>
               <%= responsibility %>
-          </a>
-        </div>
-        <table class="table table-bordered table-hover">
-          <thead class="bg-primary text-white">
-            <tr>
-              <th>語系</th>
-              <th>標題</th>
-              <th>外部連結</th>
-              <th>展示時間</th>
-              <th>創建時間</th>
-              <th>更新時間</th>
-              <th>工具</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% data.map((each)=> { %>
+            </h1>
+            <a href="/responsibility/create" class="btn btn-outline-primary" style="line-height: 2.2" type="button">
+              <%= create %>
+                <%= responsibility %>
+            </a>
+          </div>
+          <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-white">
               <tr>
-                <td class="text-nowrap">
-                  <%= each.lang %>
-                </td class="text-nowrap">
-                <td>
-                  <%= each.title %>
-                </td>
-                <td>
-                  <%= each.externalLink? each.externalLink : '' %>
-                </td>
-                <td>
-                  <%= each.showTime %>
-                </td>
-                <td>
-                  <%= each.createTime %>
-                </td>
-                <td>
-                  <%= each.updateTime %>
-                </td>
-                <td>
-                  <a href="/responsibility/update/<%= each.id %>" type="button" class="btn btn-outline-success">
-                    編輯
-                  </a>
-                  <a href="/responsibility/delete/<%= each.id %>" type="button" class="btn btn-outline-danger">
-                    刪除
-                  </a>
-                </td>
+                <th class="text-nowrap">語系</th>
+                <th>標題</th>
+                <th>外部連結</th>
+                <th>展示時間</th>
+                <th>創建時間</th>
+                <th>更新時間</th>
+                <th>工具</th>
               </tr>
-              <% }) %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% data.map((each)=> { %>
+                <tr>
+                  <td class="text-nowrap">
+                    <%= each.lang %>
+                  </td class="text-nowrap">
+                  <td>
+                    <%= each.title %>
+                  </td>
+                  <td class="text-break">
+                    <%= each.externalLink? each.externalLink : '' %>
+                  </td>
+                  <td class="text-nowrap">
+                    <%= each.showTime %>
+                  </td>
+                  <td class="text-nowrap">
+                    <%= each.createTime %>
+                  </td>
+                  <td class="text-nowrap">
+                    <%= each.updateTime %>
+                  </td>
+                  <td class="text-nowrap">
+                    <a href="/responsibility/update/<%= each.id %>" type="button" class="btn btn-outline-success">
+                      編輯
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                      data-bs-target="#deleteModal" data-bs-api="/responsibility/delete/<%= each.id %>"
+                      data-bs-title="<%= each.title %>">
+                      刪除
+                    </button>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
       </div>
   </div>
-  <%- include('./footer.ejs') %>
+  <%- include('./delete-modal.ejs') %>
+    <%- include('./footer.ejs') %>

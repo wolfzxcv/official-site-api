@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import { params } from '../../config/params';
-import { Contact } from '../../config/typeorm/entities';
+import { Contact, Log } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
-import { formatTimestamp } from '../../utils';
+import {
+  formatExpressIp,
+  formatTimestamp,
+  formatXForwardedFor
+} from '../../utils';
 
 export const contact = async (
   req: Request,
@@ -22,6 +26,25 @@ export const contact = async (
       ...each,
       time: formatTimestamp(each.time).replace(',', '')
     }));
+
+    const logRepository = appDataSource.getRepository(Log);
+
+    const clientIp =
+      formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
+      formatExpressIp(req.ip);
+
+    if (req.session.user?.username && clientIp) {
+      const newLog = {
+        username: String(req.session.user?.username),
+        event: `查看${params.contact}`,
+        ip: clientIp,
+        time: new Date()
+      };
+
+      await logRepository.save(newLog);
+    } else {
+      new Error('error');
+    }
 
     return res.render('contact.ejs', {
       data,

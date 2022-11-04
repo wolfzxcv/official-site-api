@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
+import methodOverride from 'method-override';
 import path from 'path';
 import 'reflect-metadata';
 import swaggerUi from 'swagger-ui-express';
@@ -18,6 +19,8 @@ const app = express();
 app.use(cors());
 
 app.use(morganMiddleware);
+
+app.use(methodOverride('_method'));
 
 // Body parser middleware
 app.use(express.json());

@@ -16,7 +16,7 @@
           <table class="table table-bordered table-hover">
             <thead class="bg-primary text-white">
               <tr>
-                <th>語系</th>
+                <th class="text-nowrap">語系</th>
                 <th>標題</th>
                 <th>展示時間</th>
                 <th>創建時間</th>
@@ -33,16 +33,16 @@
                   <td>
                     <%= each.title %>
                   </td>
-                  <td>
+                  <td class="text-nowrap">
                     <%= each.showTime %>
                   </td>
-                  <td>
+                  <td class="text-nowrap">
                     <%= each.createTime %>
                   </td>
-                  <td>
+                  <td class="text-nowrap">
                     <%= each.updateTime %>
                   </td>
-                  <td>
+                  <td class="text-nowrap">
                     <a href="/market/update/<%= each.id %>" type="button" class="btn btn-outline-success">
                       編輯
                     </a>

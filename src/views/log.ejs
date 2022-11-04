@@ -5,6 +5,34 @@
         <h1>
           <%= log %>
         </h1>
+        <table class="table table-bordered table-hover">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>登入帳號</th>
+              <th>事件</th>
+              <th>IP</th>
+              <th>時間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.map((each)=> { %>
+              <tr>
+                <td class="text-nowrap">
+                  <%= each.username %>
+                </td>
+                <td>
+                  <%= each.event %>
+                </td>
+                <td class="text-nowrap">
+                  <%= each.ip %>
+                </td>
+                <td class="text-nowrap">
+                  <%= each.time %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
       </div>
   </div>
   <%- include('./footer.ejs') %>

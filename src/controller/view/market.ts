@@ -1,12 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
-
 import { params } from '../../config/params';
-import { Market } from '../../config/typeorm/entities';
+import { Log, Market } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
-import { formatLangDisplay, formatTimestamp } from '../../utils';
+import {
+  formatExpressIp,
+  formatLangDisplay,
+  formatTimestamp,
+  formatXForwardedFor
+} from '../../utils';
 
 const marketRepository = appDataSource.getRepository(Market);
+const logRepository = appDataSource.getRepository(Log);
 
 export const market = async (
   req: Request,
@@ -28,6 +33,23 @@ export const market = async (
       createTime: formatTimestamp(each.createTime).replace(',', ''),
       updateTime: formatTimestamp(each.updateTime).replace(',', '')
     }));
+
+    const clientIp =
+      formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
+      formatExpressIp(req.ip);
+
+    if (req.session.user?.username && clientIp) {
+      const newLog = {
+        username: String(req.session.user?.username),
+        event: `查看${params.market}`,
+        ip: clientIp,
+        time: new Date()
+      };
+
+      await logRepository.save(newLog);
+    } else {
+      new Error('error');
+    }
 
     return res.render('market.ejs', {
       data,
@@ -80,6 +102,24 @@ export const marketCreateFunction = async (
       };
 
       await marketRepository.save(newInput);
+
+      const clientIp =
+        formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
+        formatExpressIp(req.ip);
+
+      if (req.session.user?.username && clientIp) {
+        const newLog = {
+          username: String(req.session.user?.username),
+          event: `新增${params.market}:${title}`,
+          ip: clientIp,
+          time: new Date()
+        };
+
+        await logRepository.save(newLog);
+      } else {
+        new Error('error');
+      }
+
       res.redirect('/market');
     } else {
       req.flash('error', '資料不完全');
@@ -123,6 +163,55 @@ export const marketUpdate = async (
   }
 };
 
+export const marketUpdateFunction = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = Number(req.params.id);
+    const { lang, title, time, content } = req.body;
+
+    const dataIsValid = lang && title && time && content;
+
+    if (id && !!dataIsValid) {
+      const updateInput = {
+        lang,
+        title,
+        showTime: time,
+        content,
+        updateTime: new Date()
+      };
+
+      await marketRepository.update({ id }, updateInput);
+
+      const clientIp =
+        formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
+        formatExpressIp(req.ip);
+
+      if (req.session.user?.username && clientIp) {
+        const newLog = {
+          username: String(req.session.user?.username),
+          event: `更新${params.market}:${title}`,
+          ip: clientIp,
+          time: new Date()
+        };
+
+        await logRepository.save(newLog);
+      } else {
+        new Error('error');
+      }
+
+      res.redirect('/market');
+    } else {
+      req.flash('error', '資料有錯誤');
+      res.redirect(`/market/update/${id}`);
+    }
+  } catch (err) {
+    next(res.customResponse(customCodes.serverError, 'error', null, err));
+  }
+};
+
 export const marketDeleteFunction = async (
   req: Request,
   res: Response,
@@ -136,6 +225,23 @@ export const marketDeleteFunction = async (
       res.customResponse(customCodes.success, 'success', '刪除成功');
 
       req.flash('message', '刪除成功');
+    }
+
+    const clientIp =
+      formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
+      formatExpressIp(req.ip);
+
+    if (req.session.user?.username && clientIp) {
+      const newLog = {
+        username: String(req.session.user?.username),
+        event: `刪除${params.market} id:${id}`,
+        ip: clientIp,
+        time: new Date()
+      };
+
+      await logRepository.save(newLog);
+    } else {
+      new Error('error');
     }
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));
