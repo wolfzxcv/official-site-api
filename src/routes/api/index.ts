@@ -4,7 +4,7 @@ import contact from './contact';
 import market from './market';
 import news from './news';
 import notice from './notice';
-import response from './responsibility';
+import responsibility from './responsibility';
 
 const router = Router();
 
@@ -144,6 +144,6 @@ router.use('/market', market);
  *       500:
  *         description: Server error
  */
-router.use('/response', response);
+router.use('/responsibility', responsibility);
 
 export default router;

@@ -1,5 +1,4 @@
 import { DataInputFormat, DataOutputFormat } from '../@types/dataFormat';
-import { decodeHtml } from './decodeHtml';
 import { formatTimestamp } from './formatTimestamp';
 
 export const formatOutput = (data: DataInputFormat[]) => {
@@ -11,7 +10,7 @@ export const formatOutput = (data: DataInputFormat[]) => {
     const eachData: DataOutputFormat = {
       id: each.id,
       title: each.title,
-      content: decodeHtml(each.content),
+      content: each.content,
       time
     };
 
