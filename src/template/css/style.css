@@ -16,6 +16,6 @@
 }
 
 .ck-editor__editable[role='textbox'] {
-  /* editing area */
-  min-height: 300px;
+  height: 400px;
+  overflow-y: scroll;
 } /*# sourceMappingURL=style.css.map */
