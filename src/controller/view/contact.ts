@@ -22,7 +22,7 @@ export const contact = async (
       }
     });
 
-    const data = contacts.map(each => ({
+    const output = contacts.map(each => ({
       ...each,
       time: formatTimestamp(each.time).replace(',', '')
     }));
@@ -46,9 +46,34 @@ export const contact = async (
       new Error('error');
     }
 
+    const perPage = params.pageSize;
+
+    const totalPage = Math.ceil(contacts.length / perPage);
+
+    let page = Number(req.query.page);
+
+    if (!!page) {
+      if (page > totalPage) {
+        // last page
+        page = totalPage;
+      } else if (page < 1) {
+        // first page
+        page = 1;
+      }
+    } else {
+      // first page
+      page = 1;
+    }
+
+    // index starts from 0, so we should - 1
+    const data = output.slice(perPage * (page - 1), perPage * page);
+
     return res.render('contact.ejs', {
-      data,
       name: req.session.user?.username || params.defaultName,
+      data,
+      page,
+      total: totalPage,
+      pageUrl: 'contact',
       ...params
     });
   } catch (err) {

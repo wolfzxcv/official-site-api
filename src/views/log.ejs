@@ -14,7 +14,7 @@
               <th>時間</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="display-content">
             <% data.map((each)=> { %>
               <tr>
                 <td class="text-nowrap">
@@ -33,6 +33,8 @@
               <% }) %>
           </tbody>
         </table>
+
+        <%- include('./pagination.ejs') %>
       </div>
   </div>
   <%- include('./footer.ejs') %>

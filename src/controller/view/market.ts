@@ -26,7 +26,7 @@ export const market = async (
       }
     });
 
-    const data = markets.map(each => ({
+    const output = markets.map(each => ({
       ...each,
       lang: formatLangDisplay(each.lang),
       showTime: formatTimestamp(each.showTime).slice(0, 10),
@@ -51,9 +51,34 @@ export const market = async (
       new Error('error');
     }
 
+    const perPage = params.pageSize;
+
+    const totalPage = Math.ceil(markets.length / perPage);
+
+    let page = Number(req.query.page);
+
+    if (!!page) {
+      if (page > totalPage) {
+        // last page
+        page = totalPage;
+      } else if (page < 1) {
+        // first page
+        page = 1;
+      }
+    } else {
+      // first page
+      page = 1;
+    }
+
+    // index starts from 0, so we should - 1
+    const data = output.slice(perPage * (page - 1), perPage * page);
+
     return res.render('market.ejs', {
-      data,
       name: req.session.user?.username || params.defaultName,
+      data,
+      page,
+      total: totalPage,
+      pageUrl: 'market',
       ...params
     });
   } catch (err) {
