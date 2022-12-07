@@ -15,37 +15,37 @@
           <table class="table table-bordered table-hover">
             <thead class="bg-primary text-white">
               <tr>
-                <th class="text-nowrap">語系</th>
+                <th class="width-lang">語系</th>
                 <th>標題</th>
-                <th>外部連結</th>
-                <th>展示時間</th>
-                <th>創建時間</th>
-                <th>更新時間</th>
-                <th>工具</th>
+                <th class="text-break">外部連結</th>
+                <th class="width-date">展示時間</th>
+                <th class="width-date-time">創建時間</th>
+                <th class="width-date-time">更新時間</th>
+                <th class="width-tools">工具</th>
               </tr>
             </thead>
             <tbody>
               <% data.map((each)=> { %>
                 <tr>
-                  <td class="text-nowrap">
+                  <td>
                     <%= each.lang %>
-                  </td class="text-nowrap">
+                  </td>
                   <td>
                     <%= each.title %>
                   </td>
-                  <td class="text-break">
+                  <td>
                     <%= each.externalLink? each.externalLink : '' %>
                   </td>
-                  <td class="text-nowrap">
+                  <td>
                     <%= each.showTime %>
                   </td>
-                  <td class="text-nowrap">
+                  <td>
                     <%= each.createTime %>
                   </td>
-                  <td class="text-nowrap">
+                  <td>
                     <%= each.updateTime %>
                   </td>
-                  <td class="text-nowrap">
+                  <td>
                     <a href="/responsibility/update/<%= each.id %>" type="button" class="btn btn-outline-success">
                       編輯
                     </a>
