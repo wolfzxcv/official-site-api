@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/wolfzxcv/official-site-api/compare/v1.3.3...v1.4.0) (2023-02-01)
+
+
+### Features
+
+* **all:** add basic view of all pages, add login feature ([c5c8f03](https://github.com/wolfzxcv/official-site-api/commit/c5c8f035de4a28ef3cbd9945f4254e959b537d10))
+* **many:** add copyAssets to copy "non ts files" to dist folder ([ee3cdef](https://github.com/wolfzxcv/official-site-api/commit/ee3cdefc5a6ea142b0051e9ad629d21693fa577c))
+* **many:** add crud and log funcs in all pages ([c80f4b4](https://github.com/wolfzxcv/official-site-api/commit/c80f4b47d718606e1b61e8b7a073738fc2ad4710))
+* **many:** add feature for WCGTGH(promotion), modify many files ([ac784b3](https://github.com/wolfzxcv/official-site-api/commit/ac784b3809165479246064c91ada7549595f636d))
+* **many:** add pagination ([7d26370](https://github.com/wolfzxcv/official-site-api/commit/7d263705868a8f74873189041bbcf1e4885551d9))
+* **many:** add view related files ([1c1b01e](https://github.com/wolfzxcv/official-site-api/commit/1c1b01e3a73de53784d0fa9e4828801d05c7f857))
+* **many:** modify Entity, add delete modal, add some funcs of market ([21b1f9a](https://github.com/wolfzxcv/official-site-api/commit/21b1f9a22f2f8dd3922a550b1cf72cb37aef0a6d))
+
+
+### Bug Fixes
+
+* **file size:** modify file size, height of ckeditor ([0f34417](https://github.com/wolfzxcv/official-site-api/commit/0f3441741dac1d12e0017c19f02a9eee86fd4242))
+* **route, html:** fix route, remove decodeHtml ([ff19302](https://github.com/wolfzxcv/official-site-api/commit/ff19302811ed52fa3a5758a0baf55751c50f5898))
+
 ### [1.3.3](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.3.2...v1.3.3) (2022-03-21)
 
 
