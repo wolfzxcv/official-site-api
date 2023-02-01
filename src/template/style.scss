@@ -16,7 +16,7 @@
 
 .ck-editor__editable[role='textbox'] {
   height: 400px;
-  overflow-y: scroll;
+  resize: vertical;
 }
 
 .width-lang {
@@ -37,4 +37,8 @@
 
 .width-tools {
   width: 138px;
+}
+
+td {
+  padding: 4px;
 }

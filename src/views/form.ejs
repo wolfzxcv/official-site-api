@@ -14,8 +14,8 @@
         <form class="my-5 mx-3 needs-validation" action="<%= submit %><%= !!locals.isPatch ? '?_method=PATCH' : '' %>"
           method="POST" novalidate>
           <div class="mb-3 row">
-            <label for="lang" class="col-sm-2 col-form-label">語言</label>
-            <div class="col-sm-10">
+            <label for="lang" class="col-sm-1 col-form-label">語言</label>
+            <div class="col-sm-11">
               <select name="lang" class="form-select" aria-label="選取語言" required>
                 <option selected disabled value="">選取語言</option>
                 <option value="cn" <%=locals.data && data.lang==='cn' ? 'selected' : '' %>>簡體中文</option>
@@ -29,20 +29,20 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="title" class="col-sm-2 col-form-label">標題</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="title"
-                value="<%= locals.data && data.title ? data.title: '' %>" required>
+            <label for="title" class="col-sm-1 col-form-label">標題</label>
+            <div class="col-sm-11">
+              <input type="text" class="form-control" name="title" maxlength="100" minlength="1"
+                value="<%=  locals.data && data.title ? data.title: '' %>" required>
               <div class="invalid-feedback">
-                請輸入標題
+                請輸入標題(1-100字元, 開頭不可為空白)
               </div>
             </div>
           </div>
 
           <% if (!!locals.onTop) { %>
             <div class="mb-3 row">
-              <label for="onTop" class="col-sm-2 col-form-label">置頂</label>
-              <div class="col-sm-10">
+              <label for="onTop" class="col-sm-1 col-form-label">置頂</label>
+              <div class="col-sm-11">
                 <div class="form-check form-switch styled-switch">
                   <input class="form-check-input" type="checkbox" role="switch" name="onTop" <%=locals.data &&
                     data.onTop ? 'checked' : '' %> >
@@ -53,8 +53,8 @@
 
               <% if (!!locals.externalLink) { %>
                 <div class="mb-3 row">
-                  <label for="externalLink" class="col-sm-2 col-form-label">外部連結</label>
-                  <div class="col-sm-10">
+                  <label for="externalLink" class="col-sm-1 col-form-label">外部連結</label>
+                  <div class="col-sm-11">
                     <input type="url" class="form-control" pattern="https://.*" size="30"
                       value="<%=locals.data && data.externalLink ? data.externalLink  : '' %>" name="externalLink">
                     <div class="invalid-feedback">
@@ -65,17 +65,20 @@
                 <% } %>
 
                   <div class="mb-3 row">
-                    <label for="time" class="col-sm-2 col-form-label">展示時間</label>
-                    <div class="col-sm-10">
+                    <label for="time" class="col-sm-1 col-form-label">展示時間</label>
+                    <div class="col-sm-11">
                       <input type="date" class="form-control"
                         value="<%= locals.data && data.showTime? data.showTime.toLocaleDateString('en-CA') : '' %>"
                         name="time" min="2021-01-01" max="2030-12-31" required>
+                      <div class="invalid-feedback">
+                        請輸入展示時間
+                      </div>
                     </div>
                   </div>
 
                   <div class="mb-3 row">
-                    <label for="content" class="col-sm-2 col-form-label">內容</label>
-                    <div class="col-sm-10">
+                    <label for="content" class="col-sm-1 col-form-label">內容</label>
+                    <div class="col-sm-11">
                       <textarea name="content" id="editor" required>
               </textarea>
 

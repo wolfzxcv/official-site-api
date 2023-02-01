@@ -1,8 +1,10 @@
 import { Sites } from 'src/@types/sites';
 import { Locales } from '../../@types';
 
+/** en = 英, cn = 簡體中文, zh = 繁體中文  */
 const allowLangs = ['en', 'cn', 'zh'];
 
+/** g = 國際, b = IB代理, m = 金業  */
 const allowSites = ['g', 'm'];
 
 export type IQuery = {

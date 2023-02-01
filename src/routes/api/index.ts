@@ -5,6 +5,7 @@ import market from './market';
 import news from './news';
 import notice from './notice';
 import responsibility from './responsibility';
+import wcgtgh from './wcgtgh';
 
 const router = Router();
 
@@ -145,5 +146,38 @@ router.use('/market', market);
  *         description: Server error
  */
 router.use('/responsibility', responsibility);
+
+/**
+ * @swagger
+ * /contact:
+ *   post:
+ *     summary: 聯繫我們
+ *     parameters:
+ *     - name: body
+ *       in: body
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         mobile:
+ *           type: string
+ *         qq:
+ *           type: string
+ *       required:
+ *           - name
+ *           - email
+ *           - mobile
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400:
+ *         description: Client error
+ *       500:
+ *         description: Server error
+ */
+
+router.use('/wcgtgh', wcgtgh);
 
 export default router;

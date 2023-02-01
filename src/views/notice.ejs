@@ -48,10 +48,11 @@
                     <%= each.updateTime %>
                   </td>
                   <td>
-                    <a href="/notice/<%= site %>/update/<%= each.id %>" type="button" class="btn btn-outline-success">
+                    <a href="/notice/<%= site %>/update/<%= each.id %>" type="button"
+                      class="btn btn-outline-success btn-sm">
                       編輯
                     </a>
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                       data-bs-target="#deleteModal" data-bs-api="/notice/<%= site %>/delete/<%= each.id %>"
                       data-bs-title="<%= each.title %>">
                       刪除

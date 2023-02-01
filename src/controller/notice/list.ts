@@ -31,6 +31,14 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 
       const output = formatOutput(notice);
 
+      const topItems = output.filter(x => x.onTop === true);
+
+      const restItems = output.filter(x => x.onTop !== true);
+
+      const outputResult = [...topItems, ...restItems];
+
+      res.customResponse(customCodes.success, 'success', outputResult);
+
       res.customResponse(customCodes.success, 'success', output);
     } else {
       res.customResponse(

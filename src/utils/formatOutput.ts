@@ -5,7 +5,7 @@ export const formatOutput = (data: DataInputFormat[]) => {
   const output: DataOutputFormat[] = data.map(each => {
     const date = each.showTime ? each.showTime : each.createTime;
 
-    const time = formatTimestamp(date);
+    const time = formatTimestamp(date).slice(0, 10);
 
     const eachData: DataOutputFormat = {
       id: each.id,

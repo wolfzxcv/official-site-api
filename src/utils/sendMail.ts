@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
-import { IContactInput } from '../@types';
 
-export const sendMail = async (content: IContactInput) => {
+export const sendMail = async (data: string[], subject: string) => {
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -11,22 +10,6 @@ export const sendMail = async (content: IContactInput) => {
       }
     });
 
-    const data = [
-      `name: ${content.firstName} ${content.lastName}`,
-      `tel: ${content.mobile}`,
-      `email: ${content.email}`,
-      `area: ${content.area}`,
-      `type: ${content.type}`
-    ];
-
-    if (content.account) {
-      data.push(`account: ${content.account}`);
-    }
-
-    if (content.content) {
-      data.push(`message: ${content.content}`);
-    }
-
     const text = data.join(' ');
 
     const html = data.join('</br>');
@@ -34,7 +17,7 @@ export const sendMail = async (content: IContactInput) => {
     await transporter.sendMail({
       from: process.env.CUSTOMER_SERVICE_EMAIL,
       to: process.env.CUSTOMER_SERVICE_EMAIL,
-      subject: '[WCG國際站]客戶填寫諮詢表單',
+      subject,
       text,
       html
     });

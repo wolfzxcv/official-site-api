@@ -7,7 +7,8 @@ import {
   NoticeG,
   NoticeM,
   Responsibility,
-  User
+  User,
+  WCGTGH
 } from './config/typeorm/entities';
 import { currentENV } from './utils/currentENV';
 
@@ -23,7 +24,16 @@ export const appDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: [Contact, Log, Market, NoticeG, NoticeM, Responsibility, User],
+  entities: [
+    Contact,
+    Log,
+    Market,
+    NoticeG,
+    NoticeM,
+    Responsibility,
+    User,
+    WCGTGH
+  ],
   subscribers: [],
   migrations: []
 });

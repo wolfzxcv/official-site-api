@@ -19,7 +19,24 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
       time: new Date()
     };
 
-    await sendMail(newInput);
+    // email content
+    const data = [
+      `name: ${newInput.firstName} ${newInput.lastName}`,
+      `tel: ${newInput.mobile}`,
+      `email: ${newInput.email}`,
+      `area: ${newInput.area}`,
+      `type: ${newInput.type}`
+    ];
+
+    if (newInput.account) {
+      data.push(`account: ${newInput.account}`);
+    }
+
+    if (newInput.content) {
+      data.push(`message: ${newInput.content}`);
+    }
+
+    await sendMail(data, '[WCG國際站]客戶填寫諮詢表單');
 
     const contactRepository = appDataSource.getRepository(Contact);
 
