@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/wolfzxcv/official-site-api/compare/v1.4.0...v1.4.1) (2023-02-02)
+
+
+### Bug Fixes
+
+* **sendmail:** fix mail settings and format ([a8e29ab](https://github.com/wolfzxcv/official-site-api/commit/a8e29abbd97b056894afd99d22ab733849fb6fe7))
+
 ## [1.4.0](https://github.com/wolfzxcv/official-site-api/compare/v1.3.3...v1.4.0) (2023-02-01)
 
 
