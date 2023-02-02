@@ -31,7 +31,7 @@ export const wcgtgh = async (
       `姓名: ${newInput.name}`,
       `电邮: ${newInput.email}`,
       `手机号: ${newInput.mobile}`,
-      `微信或QQ: ${newInput.qq}`
+      `微信或QQ: ${newInput.qq || ''}`
     ];
 
     await sendMail(data, '[WCG國際站]推广活动落地页');
