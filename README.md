@@ -124,3 +124,58 @@ type ICheckIpRes = {
   location?: string; // 回傳地區代碼, 香港為 HK
 };
 ```
+
+## 7.WCGTGH 廣告投放
+
+| Item   | Value       |
+| ------ | ----------- |
+| Method | POST        |
+| path   | **/wcgtgh** |
+| param  |             |
+| table  | g_WCGTGH    |
+
+```typescript=
+type IWCGTGH = {
+  name: string;
+  email: string;
+  mobile: string;
+  qq?: string;
+};
+```
+
+- 以上沒打問號的, 代表必填
+- 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
+- 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
+
+### 環境變數
+
+- PORT
+  - 跑在哪個 port
+- DB_HOST_DEV
+  - 開發環境的 DB domain/ip
+- DB_HOST_PROD
+  - 正式環境的 DB domain/ip
+- DB_PORT
+  - DB 的 port
+- DB_USERNAME
+  - DB username
+- DB_PASSWORD
+  - DB password
+- DB_NAME
+  - DB name
+- MAX_QUERY
+  - 回傳給前台的 API, 最多幾筆
+- SESSION_SECRET
+  - session secret
+- CUSTOMER_SERVICE_EMAIL
+  - 聯絡我們/活動表單, 收件者
+- EMAIL_SENDER
+  - Email sender
+- EMAIL_HOST
+  - Email host/server
+- EMAIL_PORT
+  - Email port
+- EMAIL_ACCOUNT
+  - Email account
+- EMAIL_PASSWORD
+  - Email password

@@ -38,8 +38,6 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
       const outputResult = [...topItems, ...restItems];
 
       res.customResponse(customCodes.success, 'success', outputResult);
-
-      res.customResponse(customCodes.success, 'success', output);
     } else {
       res.customResponse(
         customCodes.clientError,
