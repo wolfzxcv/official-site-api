@@ -149,9 +149,9 @@ router.use('/responsibility', responsibility);
 
 /**
  * @swagger
- * /contact:
+ * /wcgtgh:
  *   post:
- *     summary: 聯繫我們
+ *     summary: WCGTGH 廣告投放
  *     parameters:
  *     - name: body
  *       in: body
