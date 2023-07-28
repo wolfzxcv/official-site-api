@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.4](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.4.3...v1.4.4) (2023-07-28)
+
 ### [1.4.3](https://github.com/wolfzxcv/official-site-api/compare/v1.4.1...v1.4.3) (2023-02-16)
 
 ### [1.4.2](https://github.com/wolfzxcv/official-site-api/compare/v1.4.1...v1.4.2) (2023-02-15)
