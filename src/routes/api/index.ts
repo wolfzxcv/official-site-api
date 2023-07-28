@@ -39,12 +39,6 @@ router.use('/checkIp', checkIp);
  *           type: string
  *         email:
  *           type: string
- *         area:
- *           type: string
- *         type:
- *           type: string
- *         account:
- *           type: string
  *         content:
  *           type: string
  *       required:
@@ -52,8 +46,6 @@ router.use('/checkIp', checkIp);
  *           - lastName
  *           - mobile
  *           - email
- *           - area
- *           - type
  *     responses:
  *       200:
  *         description: OK
