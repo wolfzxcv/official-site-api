@@ -1,6 +1,6 @@
 {
   "name": "wcg-api",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "wcg api",
   "engines": {
     "node": "^18.17.0",
