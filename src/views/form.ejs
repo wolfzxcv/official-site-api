@@ -1,0 +1,101 @@
+<%- include('./header.ejs') %>
+  <!-- insert CKEditor START -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/super-build/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/super-build/translations/zh.js"></script>
+  <!-- insert CKEditor END -->
+
+  <div class="row mx-0 flex-nowrap">
+    <%- include('./nav.ejs') %>
+      <div class="col py-3">
+        <h2>
+          <%= method %>
+            <%= page %>
+        </h2>
+        <form class="my-5 mx-3 needs-validation" action="<%= submit %><%= !!locals.isPatch ? '?_method=PATCH' : '' %>"
+          method="POST" novalidate>
+          <div class="mb-3 row">
+            <label for="lang" class="col-sm-1 col-form-label">語言</label>
+            <div class="col-sm-11">
+              <select name="lang" class="form-select" aria-label="選取語言" required>
+                <option selected disabled value="">選取語言</option>
+                <option value="cn" <%=locals.data && data.lang==='cn' ? 'selected' : '' %>>簡體中文</option>
+                <option value="zh" <%=locals.data && data.lang==='zh' ? 'selected' : '' %>>繁體中文</option>
+                <option value="en" <%=locals.data && data.lang==='en' ? 'selected' : '' %>>英文</option>
+              </select>
+              <div class="invalid-feedback">
+                請選取語言
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="title" class="col-sm-1 col-form-label">標題</label>
+            <div class="col-sm-11">
+              <input type="text" class="form-control" name="title" maxlength="100" minlength="1"
+                value="<%=  locals.data && data.title ? data.title: '' %>" required>
+              <div class="invalid-feedback">
+                請輸入標題(1-100字元, 開頭不可為空白)
+              </div>
+            </div>
+          </div>
+
+          <% if (!!locals.externalLink) { %>
+            <div class="mb-3 row">
+              <label for="externalLink" class="col-sm-1 col-form-label">外部連結</label>
+              <div class="col-sm-11">
+                <input type="url" class="form-control" pattern="https://.*" size="30"
+                  value="<%=locals.data && data.externalLink ? data.externalLink  : '' %>" name="externalLink">
+                <div class="invalid-feedback">
+                  請輸入正確的URL, 且為https開頭
+                </div>
+              </div>
+            </div>
+            <% } %>
+
+              <div class="mb-3 row">
+                <label for="content" class="col-sm-1 col-form-label">內容</label>
+                <div class="col-sm-11">
+                  <textarea name="content" id="editor" required>
+              </textarea>
+
+                  <div class="invalid-feedback">
+                    請輸入內容
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <% if (error){ %>
+                  <span class="text-danger">
+                    <%= error %>
+                  </span>
+                  <% } %>
+              </div>
+
+              <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary btn-lg">
+                  提交
+                </button>
+
+                <% if(locals.data && data.content){ %>
+                  <button type="reset" onclick="window.location.reload()" class="btn btn-outline-danger
+                        btn-lg mx-5">重置</button>
+                  <% } else { %>
+                    <button type="reset" onclick="resetEditor()" class="btn btn-outline-danger btn-lg mx-5">重置</button>
+                    <% } %>
+
+                      <button type="button" class="btn btn-outline-secondary btn-lg"
+                        onclick="history.back()">返回</button>
+              </div>
+      </div>
+      </form>
+  </div>
+  <script src="/js/ckeditor-config.js"></script>
+  <script src="/js/form-validation.js"></script>
+
+  <% if (locals.data && data.content) { %>
+    <script>
+      setEditor("<%= data.content %>")
+    </script>
+    <% } %>
+      <%- include('./footer.ejs') %>

@@ -1,0 +1,59 @@
+<%- include('./header.ejs') %>
+  <div class="row mx-0 flex-nowrap">
+    <%- include('./nav.ejs') %>
+      <div class="col py-3">
+        <%- include('./alert-message.ejs') %>
+          <div class="d-flex justify-content-between mb-3">
+            <h1>
+              <%= announcement %>
+            </h1>
+            <a href="/announcement/create" class="btn btn-outline-primary" style="line-height: 2.2" type="button">
+              <%= create %>
+                <%= announcement %>
+            </a>
+          </div>
+
+          <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th class="width-lang">語系</th>
+                <th>標題</th>
+                <th class="width-date-time">創建時間</th>
+                <th class="width-date-time">更新時間</th>
+                <th class="width-tools">工具</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.map((each)=> { %>
+                <tr>
+                  <td>
+                    <%= each.lang %>
+                  </td>
+                  <td>
+                    <%= each.title %>
+                  </td>
+                  <td>
+                    <%= each.createTime %>
+                  </td>
+                  <td>
+                    <%= each.updateTime %>
+                  </td>
+                  <td>
+                    <a href="/announcement/update/<%= each.id %>" type="button" class="btn btn-outline-success btn-sm ">
+                      編輯
+                    </a>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                      data-bs-target="#deleteModal" data-bs-api="/announcement/delete/<%= each.id %>"
+                      data-bs-title="<%= each.title %>">
+                      刪除
+                    </button>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+          <%- include('./pagination.ejs') %>
+      </div>
+  </div>
+  <%- include('./delete-modal.ejs') %>
+    <%- include('./footer.ejs') %>

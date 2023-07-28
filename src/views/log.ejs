@@ -1,0 +1,40 @@
+<%- include('./header.ejs') %>
+  <div class="row mx-0 flex-nowrap">
+    <%- include('./nav.ejs') %>
+      <div class="col py-3">
+        <h1>
+          <%= log %>
+        </h1>
+        <table class="table table-bordered table-hover">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="width-date">登入帳號</th>
+              <th>事件</th>
+              <th class="width-ip">IP</th>
+              <th class="width-date-time">時間</th>
+            </tr>
+          </thead>
+          <tbody id="display-content">
+            <% data.map((each)=> { %>
+              <tr>
+                <td>
+                  <%= each.username %>
+                </td>
+                <td>
+                  <%= each.event %>
+                </td>
+                <td>
+                  <%= each.ip %>
+                </td>
+                <td>
+                  <%= each.time %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+
+        <%- include('./pagination.ejs') %>
+      </div>
+  </div>
+  <%- include('./footer.ejs') %>

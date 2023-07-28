@@ -1,0 +1,102 @@
+# API 文件
+
+## 0.共用 response 格式
+
+```typescript=
+type IResponseFormat = {
+  status: number;
+  message: string;
+  code: 1 | 0;
+  data?: any;
+  error?: any;
+};
+```
+
+- 語言代號,[依照 ISO 碼命名](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), API 參數 **lang** 為要請求的 **語系**
+  cn = 簡體中文
+  zh = 繁體中文
+  en = 英語
+
+```typescript=
+type DataOutputFormat = {
+  id: number;
+  title: string;
+  content: string;
+  time: string;
+};
+```
+
+## 1.最新消息
+
+| Item   | Value             |
+| ------ | ----------------- |
+| Method | GET               |
+| path   | **/announcement** |
+| param  | lang              |
+| table  | announcement      |
+
+## 2.分秒快訊
+
+| Item   | Value     |
+| ------ | --------- |
+| Method | GET       |
+| path   | **/news** |
+| param  | lang      |
+| table  | news      |
+
+## 3.聯繫我們
+
+| Item   | Value        |
+| ------ | ------------ |
+| Method | POST         |
+| path   | **/contact** |
+| param  |              |
+| table  | contact      |
+
+```typescript=
+type IContactInput = {
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  email: string;
+  content?: string;
+};
+```
+
+- 以上沒打問號的, 代表必填
+
+## 4.偵測 IP 來源地區
+
+| Item   | Value        |
+| ------ | ------------ |
+| Method | GET          |
+| path   | **/checkip** |
+| param  |              |
+
+```typescript=
+type ICheckIpRes = {
+  ip: string; // client public ip
+  location?: string; // 回傳地區代碼, 香港為 HK
+};
+```
+
+### 環境變數
+
+- PORT
+  - 跑在哪個 port
+- DB_HOST_DEV
+  - 開發環境的 DB domain/ip
+- DB_HOST_PROD
+  - 正式環境的 DB domain/ip
+- DB_PORT
+  - DB 的 port
+- DB_USERNAME
+  - DB username
+- DB_PASSWORD
+  - DB password
+- DB_NAME
+  - DB name
+- MAX_QUERY
+  - 回傳給前台的 API, 最多幾筆
+- SESSION_SECRET
+  - session secret

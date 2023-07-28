@@ -1,0 +1,45 @@
+.login {
+  min-height: 800px;
+  padding-top: 250px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.styled-switch > input {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.form-switch {
+  padding-left: 3rem;
+  padding-top: 0.5rem;
+}
+
+.ck-editor__editable[role='textbox'] {
+  height: 400px;
+  resize: vertical;
+}
+
+.width-lang {
+  width: 49px;
+}
+
+.width-ip {
+  width: 105px;
+}
+
+.width-date {
+  width: 99px;
+}
+
+.width-date-time {
+  width: 162px;
+}
+
+.width-tools {
+  width: 138px;
+}
+
+td {
+  padding: 4px;
+} /*# sourceMappingURL=style.css.map */
