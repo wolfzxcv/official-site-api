@@ -1,6 +1,6 @@
 {
   "name": "thsj-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "thsj api",
   "engines": {
     "node": "^18.17.0",
