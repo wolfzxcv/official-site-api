@@ -1,31 +1,34 @@
+import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
-import { News } from '../../config/typeorm/entities';
-import { appDataSource } from '../../data-source';
+import { IDailyFxAsiaRes, INewsRes } from 'src/@types/news';
 import { customCodes } from '../../middleware/response/customCodes';
-import { checkLang } from '../../middleware/validation/checkQuery';
-import { MAX_QUERY, formatOutput } from '../../utils';
+import { formatTimestamp } from '../../utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const queryValue = checkLang(req.query);
-    if (!!queryValue) {
-      const newsRepository = appDataSource.getRepository(News);
-      const news = await newsRepository.find({
-        where: [{ lang: queryValue }],
-        order: {
-          createTime: 'DESC'
-        },
-        take: MAX_QUERY()
+    const result = await axios.get<IDailyFxAsiaRes[]>(
+      'https://www.dailyfxasia.com/real-time-news/update-data'
+    );
+
+    if (result && result.data) {
+      const resultData = result.data;
+
+      const news: INewsRes[] = resultData.map(x => {
+        const timestampToDate = new Date(x.createAt * 1000);
+
+        const formatTime = formatTimestamp(timestampToDate).replace(',', '');
+
+        return {
+          id: x.id,
+          createAt: x.createAt,
+          text: x.text,
+          time: formatTime.slice(5, 16) || ''
+        };
       });
 
-      const output = formatOutput(news);
-
-      res.customResponse(customCodes.success, 'success', output);
+      res.customResponse(customCodes.success, 'success', news);
     } else {
-      res.customResponse(
-        customCodes.clientError,
-        'Please input valid lang in query'
-      );
+      res.customResponse(customCodes.serverError, 'error');
     }
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));

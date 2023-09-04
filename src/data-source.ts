@@ -1,12 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import {
-  Announcement,
-  Contact,
-  Log,
-  News,
-  User
-} from './config/typeorm/entities';
+import { Announcement, Contact, Log, User } from './config/typeorm/entities';
 import { currentENV } from './utils/currentENV';
 
 export const appDataSource = new DataSource({
@@ -21,7 +15,7 @@ export const appDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: [Announcement, Contact, Log, News, User],
+  entities: [Announcement, Contact, Log, User],
   subscribers: [],
   migrations: []
 });

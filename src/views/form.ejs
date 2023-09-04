@@ -39,19 +39,6 @@
             </div>
           </div>
 
-          <% if (!!locals.externalLink) { %>
-            <div class="mb-3 row">
-              <label for="externalLink" class="col-sm-1 col-form-label">外部連結</label>
-              <div class="col-sm-11">
-                <input type="url" class="form-control" pattern="https://.*" size="30"
-                  value="<%=locals.data && data.externalLink ? data.externalLink  : '' %>" name="externalLink">
-                <div class="invalid-feedback">
-                  請輸入正確的URL, 且為https開頭
-                </div>
-              </div>
-            </div>
-            <% } %>
-
               <div class="mb-3 row">
                 <label for="content" class="col-sm-1 col-form-label">內容</label>
                 <div class="col-sm-11">

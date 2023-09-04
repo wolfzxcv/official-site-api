@@ -62,11 +62,6 @@ router.use('/contact', contact);
  * /news:
  *   get:
  *     summary: 分秒快訊
- *     parameters:
- *     - name: lang
- *       in: query
- *       required: true
- *       type: string
  *     responses:
  *       200:
  *         description: OK

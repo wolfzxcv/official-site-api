@@ -8,7 +8,7 @@ export const validatorContactInput = (
   res: Response,
   next: NextFunction
 ) => {
-  const { firstName, lastName, mobile, email, area, type } = req.body;
+  const { firstName, lastName, mobile, email } = req.body;
 
   const errors = {} as ICustomResponse['errors'];
 
@@ -26,14 +26,6 @@ export const validatorContactInput = (
 
   if (checkInput(email) !== 'valid') {
     errors.email = `Email is ${checkInput(email)}`;
-  }
-
-  if (checkInput(area) !== 'valid') {
-    errors.area = `Area is ${checkInput(area)}`;
-  }
-
-  if (checkInput(type) !== 'valid') {
-    errors.type = `Type is ${checkInput(type)}`;
   }
 
   if (Object.keys(errors).length > 0) {

@@ -41,8 +41,16 @@ type DataOutputFormat = {
 | ------ | --------- |
 | Method | GET       |
 | path   | **/news** |
-| param  | lang      |
-| table  | news      |
+| param  |           |
+
+```typescript=
+type INewsRes = {
+  id: string;
+  createAt: number;
+  text: string;
+  time: string;
+};
+```
 
 ## 3.聯繫我們
 

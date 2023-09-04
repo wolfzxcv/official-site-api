@@ -5,7 +5,6 @@ import contact from './contact';
 import log from './log';
 import login from './login';
 import logout from './logout';
-import news from './news';
 import verifyCode from './verifyCode';
 
 const router = Router();
@@ -15,7 +14,6 @@ router.use('/logout', logout);
 router.use('/verifyCode', verifyCode);
 
 router.use('/announcement', announcement);
-router.use('/news', news);
 router.use('/contact', contact);
 
 router.use('/log', log);

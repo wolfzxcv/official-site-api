@@ -112,15 +112,14 @@ export const announcementCreateFunction = async (
   next: NextFunction
 ) => {
   try {
-    const { lang, title, time, content } = req.body;
+    const { lang, title, content } = req.body;
 
-    const dataIsValid = lang && title && time && content;
+    const dataIsValid = lang && title && content;
 
     if (!!dataIsValid) {
       const newInput = {
         lang,
         title,
-        showTime: time,
         content,
         createTime: new Date()
       };
@@ -144,6 +143,7 @@ export const announcementCreateFunction = async (
         new Error('error');
       }
 
+      console.log('222');
       res.redirect('/announcement');
     } else {
       req.flash('error', '資料不完全');
@@ -194,15 +194,14 @@ export const announcementUpdateFunction = async (
 ) => {
   try {
     const id = Number(req.params.id);
-    const { lang, title, time, content } = req.body;
+    const { lang, title, content } = req.body;
 
-    const dataIsValid = lang && title && time && content;
+    const dataIsValid = lang && title && content;
 
     if (id && !!dataIsValid) {
       const updateInput = {
         lang,
         title,
-        showTime: time,
         content,
         updateTime: new Date()
       };
