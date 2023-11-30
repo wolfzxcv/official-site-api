@@ -135,7 +135,29 @@ type ICheckIpRes = {
 | table  | g_WCGTGH    |
 
 ```typescript=
-type IWCGTGH = {
+type IPromotion = {
+  name: string;
+  email: string;
+  mobile: string;
+  qq?: string;
+};
+```
+
+- 以上沒打問號的, 代表必填
+- 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
+- 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
+
+## 8. 成為代理
+
+| Item   | Value       |
+| ------ | ----------- |
+| Method | POST        |
+| path   | **/broker** |
+| param  |             |
+| table  | m_broker    |
+
+```typescript=
+type IPromotion = {
   name: string;
   email: string;
   mobile: string;

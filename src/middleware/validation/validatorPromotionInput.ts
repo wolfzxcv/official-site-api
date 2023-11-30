@@ -3,7 +3,7 @@ import { ICustomResponse } from '../../@types';
 import { checkInput } from '../../utils';
 import { customCodes } from '../response/customCodes';
 
-export const validatorWCGTGHInput = (
+export const validatorPromotionInput = (
   req: Request,
   res: Response,
   next: NextFunction

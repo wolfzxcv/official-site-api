@@ -1,48 +1,43 @@
 <div class="col-auto col-md-2 col-xl-1 px-sm-1 px-0 bg-dark">
-  <div class="d-flex flex-column align-items-center justify-content-between px-3 pt-2 text-white min-vh-100">
-    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+  <div
+    class="d-flex flex-column align-items-center justify-content-between px-3 pt-2 text-white min-vh-100"
+  >
+    <ul
+      class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+      id="menu"
+    >
       <li>
         <strong>國際</strong>
         <ul class="nav flex-column ms-1">
           <li class="w-100">
             <a href="/notice/g" class="nav-link px-0 text-nowrap">
               <i class="fas fa-bullhorn"></i>
-              <span class="d-none d-sm-inline">
-                <%= notice %>
-              </span>
+              <span class="d-none d-sm-inline"><%= notice %></span>
             </a>
           </li>
           <li>
             <a href="/market" class="nav-link px-0 text-nowrap">
               <i class="fas fa-chart-bar"></i>
-              <span class="d-none d-sm-inline">
-                <%= market %>
-              </span>
+              <span class="d-none d-sm-inline"><%= market %></span>
             </a>
           </li>
           <li>
             <a href="/responsibility" class="nav-link px-0 text-nowrap">
               <i class="fas fa-user-friends"></i>
-              <span class="d-none d-sm-inline">
-                <%= responsibility %>
-              </span>
+              <span class="d-none d-sm-inline"><%= responsibility %></span>
             </a>
           </li>
           <li>
             <a href="/contact" class="nav-link px-0 text-nowrap">
               <i class="fas fa-id-card"></i>
-              <span class="d-none d-sm-inline">
-                <%= contact %>
-              </span>
+              <span class="d-none d-sm-inline"><%= contact %></span>
             </a>
           </li>
           <!-- WCGTGH -->
           <li>
             <a href="/wcgtgh" class="nav-link px-0 text-nowrap">
               <i class="fas fa-id-card"></i>
-              <span class="d-none d-sm-inline">
-                WCGTGH
-              </span>
+              <span class="d-none d-sm-inline">WCGTGH</span>
             </a>
           </li>
         </ul>
@@ -53,9 +48,13 @@
           <li class="w-100">
             <a href="/notice/m" class="nav-link px-0 text-nowrap">
               <i class="fas fa-bullhorn"></i>
-              <span class="d-none d-sm-inline">
-                <%= notice %>
-              </span>
+              <span class="d-none d-sm-inline"><%= notice %></span>
+            </a>
+          </li>
+          <li>
+            <a href="/broker" class="nav-link px-0 text-nowrap">
+              <i class="fas fa-id-card"></i>
+              <span class="d-none d-sm-inline"><%= broker %></span>
             </a>
           </li>
         </ul>
@@ -66,24 +65,27 @@
           <li class="w-100">
             <a href="/log" class="nav-link px-0 align-middle">
               <i class="fas fa-camera-retro"></i>
-              <span class="d-none d-sm-inline">
-                <%= log %>
-              </span>
+              <span class="d-none d-sm-inline"><%= log %></span>
             </a>
           </li>
         </ul>
       </li>
-
     </ul>
 
     <div class="dropdown pb-4">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <div>
-          <%= name %>
-        </div>
+      <a
+        href="#"
+        class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+        id="dropdownUser1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <div><%= name %></div>
       </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+      <ul
+        class="dropdown-menu dropdown-menu-dark text-small shadow"
+        aria-labelledby="dropdownUser1"
+      >
         <li><a class="dropdown-item" href="/logout">登出</a></li>
       </ul>
     </div>

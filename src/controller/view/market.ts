@@ -36,7 +36,7 @@ export const market = async (
 
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     if (req.session.user?.username && clientIp) {
       const newLog = {
@@ -130,7 +130,7 @@ export const marketCreateFunction = async (
 
       const clientIp =
         formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-        formatExpressIp(req.ip);
+        formatExpressIp(req.ip as string);
 
       if (req.session.user?.username && clientIp) {
         const newLog = {
@@ -212,7 +212,7 @@ export const marketUpdateFunction = async (
 
       const clientIp =
         formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-        formatExpressIp(req.ip);
+        formatExpressIp(req.ip as string);
 
       if (req.session.user?.username && clientIp) {
         const newLog = {
@@ -254,7 +254,7 @@ export const marketDeleteFunction = async (
 
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     if (req.session.user?.username && clientIp) {
       const newLog = {

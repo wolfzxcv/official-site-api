@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import broker from './broker';
 import checkIp from './checkIp';
 import contact from './contact';
 import market from './market';
@@ -151,7 +152,7 @@ router.use('/responsibility', responsibility);
  * @swagger
  * /wcgtgh:
  *   post:
- *     summary: WCGTGH 廣告投放
+ *     summary: 廣告投放 WCGTGH (國際)
  *     parameters:
  *     - name: body
  *       in: body
@@ -179,5 +180,38 @@ router.use('/responsibility', responsibility);
  */
 
 router.use('/wcgtgh', wcgtgh);
+
+/**
+ * @swagger
+ * /broker:
+ *   post:
+ *     summary: 成為代理 (金業)
+ *     parameters:
+ *     - name: body
+ *       in: body
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         mobile:
+ *           type: string
+ *         qq:
+ *           type: string
+ *       required:
+ *           - name
+ *           - email
+ *           - mobile
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400:
+ *         description: Client error
+ *       500:
+ *         description: Server error
+ */
+
+router.use('/broker', broker);
 
 export default router;

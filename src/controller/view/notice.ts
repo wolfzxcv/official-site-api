@@ -60,7 +60,7 @@ export const notice = async (
 
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     if (req.session.user?.username && clientIp) {
       const newLog = {
@@ -196,7 +196,7 @@ export const noticeCreateFunction = async (
 
       const clientIp =
         formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-        formatExpressIp(req.ip);
+        formatExpressIp(req.ip as string);
 
       if (req.session.user?.username && clientIp) {
         const newLog = {
@@ -328,7 +328,7 @@ export const noticeUpdateFunction = async (
 
       const clientIp =
         formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-        formatExpressIp(req.ip);
+        formatExpressIp(req.ip as string);
 
       if (req.session.user?.username && clientIp) {
         const newLog = {
@@ -393,7 +393,7 @@ export const noticeDeleteFunction = async (
 
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     if (req.session.user?.username && clientIp) {
       const newLog = {

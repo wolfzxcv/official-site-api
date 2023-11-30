@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import broker from './broker';
 import contact from './contact';
 import log from './log';
 import login from './login';
@@ -23,6 +24,7 @@ router.use('/responsibility', responsibility);
 router.use('/contact', contact);
 
 router.use('/wcgtgh', wcgtgh);
+router.use('/broker', broker);
 
 router.use('/log', log);
 

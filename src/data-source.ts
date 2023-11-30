@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import {
+  Broker,
   Contact,
   Log,
   Market,
@@ -25,6 +26,7 @@ export const appDataSource = new DataSource({
   synchronize: false,
   logging: false,
   entities: [
+    Broker,
     Contact,
     Log,
     Market,

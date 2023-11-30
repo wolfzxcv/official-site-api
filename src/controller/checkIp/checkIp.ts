@@ -12,7 +12,7 @@ export const checkIp = async (
   try {
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     const result = await axios.get<IIpApiRes>(
       `http://ip-api.com/json/${clientIp}`

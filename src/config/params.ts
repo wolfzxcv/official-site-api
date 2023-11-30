@@ -5,6 +5,7 @@ export const params = {
   market: '市場分析',
   responsibility: '企業責任',
   contact: '聯繫我們',
+  broker: '成為代理',
   log: '操作紀錄',
   create: '新增', // 後台列表工具, 新增顯示"新增"
   edit: '編輯', // 後台列表工具, 編輯顯示"編輯"

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { params } from '../../config/params';
-import { Contact, Log } from '../../config/typeorm/entities';
+import { Broker, Log } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import {
@@ -9,20 +9,20 @@ import {
   formatXForwardedFor
 } from '../../utils';
 
-export const contact = async (
+export const broker = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const contactRepository = appDataSource.getRepository(Contact);
-    const contacts = await contactRepository.find({
+    const brokerRepository = appDataSource.getRepository(Broker);
+    const items = await brokerRepository.find({
       order: {
         time: 'DESC'
       }
     });
 
-    const output = contacts.map(each => ({
+    const output = items.map(each => ({
       ...each,
       time: formatTimestamp(each.time).replace(',', '')
     }));
@@ -36,7 +36,7 @@ export const contact = async (
     if (req.session.user?.username && clientIp) {
       const newLog = {
         username: String(req.session.user?.username),
-        event: `查看${params.contact}`,
+        event: `查看 成為代理`,
         ip: clientIp,
         time: new Date()
       };
@@ -48,7 +48,7 @@ export const contact = async (
 
     const perPage = params.pageSize;
 
-    const totalPage = Math.ceil(contacts.length / perPage);
+    const totalPage = Math.ceil(items.length / perPage);
 
     let page = Number(req.query.page);
 
@@ -68,12 +68,12 @@ export const contact = async (
     // index starts from 0, so we should - 1
     const data = output.slice(perPage * (page - 1), perPage * page);
 
-    return res.render('contact.ejs', {
+    return res.render('broker.ejs', {
       name: req.session.user?.username || params.defaultName,
       data,
       page,
       total: totalPage,
-      pageUrl: 'contact',
+      pageUrl: 'broker',
       ...params
     });
   } catch (err) {

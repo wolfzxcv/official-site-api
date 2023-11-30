@@ -1,3 +1,4 @@
+export * from './Broker';
 export * from './Contact';
 export * from './Log';
 export * from './Market';

@@ -31,7 +31,7 @@ export const wcgtgh = async (
 
     const clientIp =
       formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-      formatExpressIp(req.ip);
+      formatExpressIp(req.ip as string);
 
     if (req.session.user?.username && clientIp) {
       const newLog = {

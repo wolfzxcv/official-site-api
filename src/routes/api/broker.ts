@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { wcgtgh } from '../../controller/promotion/wcgtgh';
+import { broker } from '../../controller/broker';
 import { validatorPromotionInput } from '../../middleware/validation/validatorPromotionInput';
 
 const router = Router();
 
-router.post('/', [validatorPromotionInput], wcgtgh);
+router.post('/', [validatorPromotionInput], broker);
 
 export default router;

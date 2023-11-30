@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { IContactInput } from '../../@types';
-import { Contact } from '../../config/typeorm/entities/Contact';
+import { Contact } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { sendMail } from '../../utils/sendMail';

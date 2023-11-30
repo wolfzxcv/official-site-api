@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { IPromotion } from 'src/@types';
-import { WCGTGH } from '../../config/typeorm/entities';
+import { Broker } from '../../config/typeorm/entities/';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { sendMail } from '../../utils/sendMail';
 
-export const wcgtgh = async (
+export const broker = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -27,11 +27,11 @@ export const wcgtgh = async (
       `微信或QQ: ${newInput.qq || ''}`
     ];
 
-    await sendMail(data, '[WCG國際站]推广活动落地页');
+    await sendMail(data, '[WCG金业站]成为代理');
 
-    const wcgtghRepository = appDataSource.getRepository(WCGTGH);
+    const brokerRepository = appDataSource.getRepository(Broker);
 
-    await wcgtghRepository.save(newInput);
+    await brokerRepository.save(newInput);
 
     res.customResponse(customCodes.success, 'add data successfully');
   } catch (err) {
