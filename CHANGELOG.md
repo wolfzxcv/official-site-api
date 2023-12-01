@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.4.5...v1.5.0) (2023-12-01)
+
+
+### Features
+
+* **broker:** add broker api, refactor codes, update readme ([50040d9](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/50040d9dd56d82871e1f85469fdc23fc9d16ceff))
+
 ### [1.4.5](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.4.4...v1.4.5) (2023-07-28)
 
 ### [1.4.4](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.4.3...v1.4.4) (2023-07-28)
