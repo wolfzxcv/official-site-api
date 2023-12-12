@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.0...v1.5.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* **login:** add return, make sure only 1 res per time ([1331da5](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/1331da53db88bce81e4682c472415dcb41b2167e))
+
 ## [1.5.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.4.5...v1.5.0) (2023-12-01)
 
 
