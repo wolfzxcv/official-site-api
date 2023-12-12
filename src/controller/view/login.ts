@@ -29,7 +29,7 @@ export const loginFunction = async (
       const code = req.body.code.toUpperCase();
       if (code !== req.session.captcha) {
         req.flash('error', '驗證碼錯誤');
-        res.redirect(params.home);
+        return res.redirect(params.home);
       }
       const userRepository = appDataSource.getRepository(User);
 
@@ -51,9 +51,10 @@ export const loginFunction = async (
             lastLoginTime: new Date()
           };
 
-          const clientIp =
-            formatXForwardedFor(req.headers['x-forwarded-for'] as string) ||
-            formatExpressIp(req.ip as string);
+          const clientIp = formatXForwardedFor(
+            (req.headers['x-forwarded-for'] as string) ||
+              formatExpressIp(req.ip as string)
+          );
 
           if (clientIp) {
             updateUser.lastLoginIp = clientIp;
@@ -70,15 +71,15 @@ export const loginFunction = async (
           return res.redirect(params.pageAfterLogin);
         } else {
           req.flash('error', '密碼錯誤');
-          res.redirect(params.home);
+          return res.redirect(params.home);
         }
       } else {
         req.flash('error', `找不到該帳號  ${req.body.username}`);
-        res.redirect(params.home);
+        return res.redirect(params.home);
       }
     } else {
       req.flash('error', '請輸入帳號、密碼及驗證碼');
-      res.redirect(params.home);
+      return res.redirect(params.home);
     }
   } catch (err) {
     next(res.customResponse(customCodes.serverError, 'error', null, err));
