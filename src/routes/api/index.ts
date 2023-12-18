@@ -130,7 +130,7 @@ router.use('/market', market);
 
 /**
  * @swagger
- * /response:
+ * /responsibility:
  *   get:
  *     summary: 企業責任
  *     parameters:
