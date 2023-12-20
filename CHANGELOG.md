@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.1...v1.5.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* **routes\api\index.ts:** fix swagger route ([7641072](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/7641072f662a7ce2a786331037d2dd0cfd582093))
+
 ### [1.5.1](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.0...v1.5.1) (2023-12-12)
 
 
