@@ -1,8 +1,6 @@
-export * from './checkIp';
 export * from './contactInput';
 export * from './customResponse';
 export * from './locales';
-export * from './news';
 export * from './promotion';
 export * from './responseFormat';
 

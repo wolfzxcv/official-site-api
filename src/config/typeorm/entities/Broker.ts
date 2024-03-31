@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 
-@Entity('m_Broker')
+@Entity('m_broker')
 export class Broker {
   @PrimaryGeneratedColumn('increment')
   id: number;

@@ -1,29 +1,12 @@
 import { Router } from 'express';
 import broker from './broker';
-import checkIp from './checkIp';
 import contact from './contact';
 import market from './market';
-import news from './news';
 import notice from './notice';
 import responsibility from './responsibility';
 import wcgtgh from './wcgtgh';
 
 const router = Router();
-
-/**
- * @swagger
- * /checkIp:
- *   get:
- *     summary: 偵測 IP 來源地區
- *     responses:
- *       200:
- *         description: OK
- *       400:
- *         description: Client error
- *       500:
- *         description: Server error
- */
-router.use('/checkIp', checkIp);
 
 /**
  * @swagger
@@ -66,23 +49,7 @@ router.use('/checkIp', checkIp);
  *       500:
  *         description: Server error
  */
-
 router.use('/contact', contact);
-
-/**
- * @swagger
- * /news:
- *   get:
- *     summary: 取得即時新聞
- *     responses:
- *       200:
- *         description: OK
- *       400:
- *         description: Client error
- *       500:
- *         description: Server error
- */
-router.use('/news', news);
 
 /**
  * @swagger
@@ -178,7 +145,6 @@ router.use('/responsibility', responsibility);
  *       500:
  *         description: Server error
  */
-
 router.use('/wcgtgh', wcgtgh);
 
 /**
@@ -211,7 +177,6 @@ router.use('/wcgtgh', wcgtgh);
  *       500:
  *         description: Server error
  */
-
 router.use('/broker', broker);
 
 export default router;

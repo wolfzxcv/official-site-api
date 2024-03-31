@@ -93,39 +93,7 @@ type IContactInput = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
-## 5.取得即時新聞
-
-| Item   | Value     |
-| ------ | --------- |
-| Method | GET       |
-| path   | **/news** |
-| param  |           |
-
-```typescript=
-type INewsRes = {
-  imageUrl: string | null;
-  id: string;
-  createAt: number;
-  text: string;
-};
-```
-
-## 6.偵測 IP 來源地區
-
-| Item   | Value        |
-| ------ | ------------ |
-| Method | GET          |
-| path   | **/checkip** |
-| param  |              |
-
-```typescript=
-type ICheckIpRes = {
-  ip: string; // client public ip
-  location?: string; // 回傳地區代碼, 香港為 HK
-};
-```
-
-## 7.WCGTGH 廣告投放
+## 5.WCGTGH 廣告投放
 
 | Item   | Value       |
 | ------ | ----------- |
@@ -147,7 +115,7 @@ type IPromotion = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
-## 8. 成為代理
+## 6. 成為代理
 
 | Item   | Value       |
 | ------ | ----------- |
