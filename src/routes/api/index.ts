@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import broker from './broker';
+import checkIp from './checkIp';
 import contact from './contact';
 import market from './market';
 import notice from './notice';
@@ -49,6 +50,7 @@ const router = Router();
  *       500:
  *         description: Server error
  */
+
 router.use('/contact', contact);
 
 /**
@@ -145,6 +147,7 @@ router.use('/responsibility', responsibility);
  *       500:
  *         description: Server error
  */
+
 router.use('/wcgtgh', wcgtgh);
 
 /**
@@ -177,6 +180,22 @@ router.use('/wcgtgh', wcgtgh);
  *       500:
  *         description: Server error
  */
+
 router.use('/broker', broker);
+
+/**
+ * @swagger
+ * /checkIp:
+ *   get:
+ *     summary: 偵測 IP 來源地區
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400:
+ *         description: Client error
+ *       500:
+ *         description: Server error
+ */
+router.use('/checkIp', checkIp);
 
 export default router;

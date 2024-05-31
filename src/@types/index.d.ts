@@ -1,3 +1,4 @@
+export * from './checkIp';
 export * from './contactInput';
 export * from './customResponse';
 export * from './locales';

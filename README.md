@@ -137,6 +137,21 @@ type IPromotion = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
+## 7.偵測 IP 來源地區
+
+| Item   | Value        |
+| ------ | ------------ |
+| Method | GET          |
+| path   | **/checkip** |
+| param  |              |
+
+```typescript=
+type ICheckIpRes = {
+  ip: string; // client public ip
+  location?: string; // 回傳地區代碼, 香港為 HK, 若為香港IP, 前端需顯示風險彈窗
+};
+```
+
 ### 環境變數
 
 - PORT
