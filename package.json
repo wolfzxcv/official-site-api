@@ -1,6 +1,6 @@
 {
   "name": "wcg-api",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "wcg api",
   "engines": {
     "node": "^20.12.0",
