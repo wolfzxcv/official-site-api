@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.3...v1.6.0) (2024-05-31)
+
+
+### Features
+
+* **many:** add back checkip ([2816989](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/281698901a141857b2cb75e00c491c59231c7e7a))
+
 ### [1.5.3](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.2...v1.5.3) (2024-04-01)
 
 ### [1.5.2](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.1...v1.5.2) (2023-12-20)
