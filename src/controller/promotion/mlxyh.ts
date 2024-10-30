@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { IPromotion } from 'src/@types';
-import { WCGTGH } from '../../config/typeorm/entities';
+import { MLXYH } from '../../config/typeorm/entities';
 import { appDataSource } from '../../data-source';
 import { customCodes } from '../../middleware/response/customCodes';
 import { sendMail } from '../../utils/sendMail';
 
-export const wcgtgh = async (
+export const mlxyh = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -14,24 +14,22 @@ export const wcgtgh = async (
     const newInput: IPromotion = {
       name: req.body.name,
       email: req.body.email,
-      mobile: req.body.mobile,
-      qq: req.body.qq,
+      account: req.body.account,
       time: new Date()
     };
 
     // email content
     const data = [
       `姓名: ${newInput.name}`,
-      `电邮: ${newInput.email}`,
-      `手机号: ${newInput.mobile}`,
-      `微信或QQ: ${newInput.qq || ''}`
+      `邮箱: ${newInput.email}`,
+      `账户: ${newInput.mobile}`
     ];
 
     await sendMail(data, '[WCG国际站]推广活动落地页');
 
-    const wcgtghRepository = appDataSource.getRepository(WCGTGH);
+    const mlxyhRepository = appDataSource.getRepository(MLXYH);
 
-    await wcgtghRepository.save(newInput);
+    await mlxyhRepository.save(newInput);
 
     res.customResponse(customCodes.success, 'add data successfully');
   } catch (err) {

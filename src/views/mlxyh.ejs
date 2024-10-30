@@ -1,0 +1,39 @@
+<%- include('./header.ejs') %>
+  <div class="row mx-0 flex-nowrap">
+    <%- include('./nav.ejs') %>
+      <div class="col py-3">
+        <h1>
+          廣告投放 MLXYH
+        </h1>
+        <table class="table table-bordered">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>姓名</th>
+              <th>開戶郵箱</th>
+              <th>MT4帳號</th>
+              <th class="width-date-time">提交時間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.map((each)=> { %>
+              <tr>
+                <td class="text-nowrap">
+                  <%= each.name %>
+                </td class="text-nowrap">
+                <td>
+                  <%= each.email %>
+                </td>
+                <td>
+                  <%= each.account %>
+                </td>
+                <td>
+                  <%= each.time %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+        <%- include('./pagination.ejs') %>
+      </div>
+  </div>
+  <%- include('./footer.ejs') %>

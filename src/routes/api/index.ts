@@ -3,6 +3,7 @@ import broker from './broker';
 import checkIp from './checkIp';
 import contact from './contact';
 import market from './market';
+import mlxyh from './mlxyh';
 import notice from './notice';
 import responsibility from './responsibility';
 import wcgtgh from './wcgtgh';
@@ -149,6 +150,37 @@ router.use('/responsibility', responsibility);
  */
 
 router.use('/wcgtgh', wcgtgh);
+
+/**
+ * @swagger
+ * /mlxyh:
+ *   post:
+ *     summary: 廣告投放 MLXYH (國際)
+ *     parameters:
+ *     - name: body
+ *       in: body
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         account:
+ *           type: string
+ *       required:
+ *           - name
+ *           - email
+ *           - account
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400:
+ *         description: Client error
+ *       500:
+ *         description: Server error
+ */
+
+router.use('/mlxyh', mlxyh);
 
 /**
  * @swagger

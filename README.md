@@ -115,7 +115,28 @@ type IPromotion = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
-## 6. 成為代理
+## 6. WLXYH 廣告投放
+
+| Item   | Value      |
+| ------ | ---------- |
+| Method | POST       |
+| path   | **/mlxyh** |
+| param  |            |
+| table  | g_mlxyh    |
+
+```typescript=
+type IPromotion = {
+  name: string;
+  email: string;
+  account: string;
+};
+```
+
+- 以上沒打問號的, 代表必填
+- 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
+- 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
+
+## 7. 成為代理
 
 | Item   | Value       |
 | ------ | ----------- |
@@ -137,7 +158,7 @@ type IPromotion = {
 - 以上資料除了會進到資料庫, 也會使用 nodemailer 寄信到.env 設定的 CUSTOMER_SERVICE_EMAIL
 - 寄信的 server 使用.env 的 EMAIL_ACCOUNT 及 EMAIL_PASSWORD
 
-## 7.偵測 IP 來源地區
+## 8.偵測 IP 來源地區
 
 | Item   | Value        |
 | ------ | ------------ |

@@ -8,7 +8,7 @@ export const validatorPromotionInput = (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, mobile } = req.body;
+  const { name, email } = req.body;
 
   const errors = {} as ICustomResponse['errors'];
 
@@ -18,10 +18,6 @@ export const validatorPromotionInput = (
 
   if (checkInput(email) !== 'valid') {
     errors.email = `Email is ${checkInput(email)}`;
-  }
-
-  if (checkInput(mobile) !== 'valid') {
-    errors.mobile = `mobile is ${checkInput(mobile)}`;
   }
 
   if (Object.keys(errors).length > 0) {
