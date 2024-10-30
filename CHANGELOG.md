@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.7.0...v1.7.1) (2024-10-30)
+
+
+### Bug Fixes
+
+* **mlxyh:** update src\controller\promotion\mlxyh.ts ([2a5fcce](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/2a5fcce90af17dad336a34e89613bbfd5f78fc53))
+
 ## [1.7.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.6.1...v1.7.0) (2024-10-30)
 
 
