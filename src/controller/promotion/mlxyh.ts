@@ -22,7 +22,7 @@ export const mlxyh = async (
     const data = [
       `姓名: ${newInput.name}`,
       `邮箱: ${newInput.email}`,
-      `账户: ${newInput.mobile}`
+      `账户: ${newInput.account}`
     ];
 
     await sendMail(data, '[WCG国际站]推广活动落地页');
