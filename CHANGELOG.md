@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.6.1...v1.7.0) (2024-10-30)
+
+
+### Features
+
+* **mlxyh:** add a new page mlxyh ([d847b2d](https://git.wcgmarkets.com/Alice_Chou/wcg-api/commit/d847b2de67867bd621f506ac7610f0eb04a5119a))
+
 ### [1.6.1](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.6.0...v1.6.1) (2024-05-31)
 
 ## [1.6.0](https://git.wcgmarkets.com/Alice_Chou/wcg-api/compare/v1.5.3...v1.6.0) (2024-05-31)
